@@ -1,0 +1,200 @@
+// UI Breakpoints
+
+
+// Not small phones =======================================================================================
+@media (min-width: @breakpoint-medium) {
+		body.loggedIn {
+				div.core {
+						min-height: 500px;
+				}
+		}
+		
+}
+
+// Only small phones =====================================================================================
+@media (max-width: @breakpoint-small-max) {
+
+		@t-header-height-small: @t-header-height * 0.8;
+		
+		div.coreContainer {
+				padding-left: 0;
+				padding-right: 0;
+		}
+
+		// div.footer {
+		// 		// position: sticky;
+		// 		bottom: 3px;
+		// 		position: absolute;
+		// 		font-size: 90%;
+		// }
+
+		div.t-header {
+
+				padding-top: @t-header-padding / 2;
+				padding-bottom: @t-header-padding / 2;
+				height: @t-header-height-small;
+
+				a.t-logo {
+						font-size: 1rem;
+				}
+
+				nav {
+						height: @t-header-height-small;
+
+						&.t-menubar {
+
+								ul.uk-navbar-nav {
+										height: @t-header-height-small;
+
+										li {
+												padding-top: 0.6em;
+										}
+
+								}
+
+								// div.menubarCenter {
+								// 		position: static;
+								// 		top: 0;
+								// 		left: 0;
+								// 		transform: none;
+								// }
+						}
+				}
+
+				// nav.t-menubar {
+				// 		form.searchForm {
+				// 				input.searchInput {
+				// 						width: 2em;
+				// 				}
+				// 		}
+				// }
+				
+		}
+
+		div.VIATocModuleExerciser {
+				div.moduleNavigation {
+						top: @t-header-height-small;
+				}
+		}
+
+
+		div.exercise {
+				div.highlightAreas {
+						//						letter-spacing: 0.1em;
+						font-size: 150%;
+						line-height: 2em;
+				}
+		}
+		
+		
+}
+
+// Not large screens ==============================================================================================
+@media (max-width: @breakpoint-large) {
+
+		body {
+				// div.mainContainer {
+				// 		padding-bottom: 3em;
+				// }
+				
+				// div.footer {
+				// 		bottom: 3px;
+				// 		position: absolute;
+				// 		font-size: 90%;
+				// }
+		}
+}
+
+// Only large screens ============================================================================================
+@media (min-width: @breakpoint-large) {
+
+		@backgroundcolor: #EFEBE8;
+		
+		html {
+				min-height: 100vh;
+				background-color: @backgroundcolor;
+		}
+		
+		body {
+				background-color: @backgroundcolor;
+
+				div.coreContainer {
+						background-color: @backgroundcolor;
+						padding-left: 10%;
+						padding-right: 10%;
+
+						// padding-bottom: 4em; // Because of fixed footer
+
+						div.core {
+								background-color: white;
+								padding-bottom: 1em;
+						}
+				}
+
+				
+				&.wantColorBackground {
+						background-color: @t-color-primary;
+						div.coreContainer {
+								background-color: @t-color-primary;
+								div.core {
+										background-color: @t-color-primary;
+								}
+						}
+				}
+
+
+		}
+		
+
+		div.t-header {
+				padding-left: 10%;
+				padding-right: 10%;
+
+				// nav.t-menubar {
+				// 		form.searchForm {
+				// 				input.searchInput {
+				// 						width: 10em;
+				// 				}
+				// 		}
+				// }
+				
+		}
+
+		div.VIATocTaskExerciser {
+				div.exercise {
+						div.audioPlayer {
+								width: 50%;
+						}
+
+						div.videoPlayer, div.youtubePlayer, div.vimeoPlayer, div.srgVideoPlayer {
+								max-width: 60%;
+						}
+				}
+		}
+
+		// div.footer {
+		// 		position: fixed;
+		// 		width: 100%;
+		// 		bottom: 0;
+		// 		background-color: @backgroundcolor;
+		// }
+
+// 		div.zoomBox {
+// 				div.header {
+// //						background-color: #eee;
+// 		//				color: #999;
+// 						// span.close {
+// 						// 		a {
+// 						// 				color: black;
+// 						// 		}
+// 						// }
+
+// 				}
+// 		}
+}
+
+
+// Keep this for Emacs editor!
+// Local Variables:
+// less-css-compile-at-save: t
+// End:

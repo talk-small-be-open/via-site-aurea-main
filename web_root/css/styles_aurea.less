@@ -1,0 +1,3171 @@
+//
+// Styles for hep Aurea Bulla
+//
+// Namespace: "t-" = short for local "this"        (in fact "Tocca-" ... ;-)
+// Caveat! The term "Module" is used in the via software as the container for tasks, but
+// is also used as a group name for two units of the Tocca-Book
+
+// =======================================================================
+// Fonts
+// =======================================================================
+
+// Font "zeitung" is included via online Adobe CSS
+
+// @font-face {
+//   font-family: zeitung;
+//   src: url(fonts/NunitoSans-Regular.ttf);
+// 	font-weight: normal; // 400
+// }
+
+// =======================================================================
+// Importing
+// =======================================================================
+
+// Import main styles
+@import "../../base/web_root/css/styles.less";
+
+// Our SITE own uikit theme (overrides to the via base uikit theme)
+@import "uikit_theme/_import.less";
+
+@import "testdrive.less";
+
+// =======================================================================
+// Variables
+// =======================================================================
+
+
+//@t-color-primary: #d53d46;
+@t-color-primary: #950;
+@t-color-black: #333;
+@t-color-blue: #3a4d98;
+@t-color-red: @t-color-primary;
+@t-color-toccamoduleExtras: @t-color-primary;
+@t-color-tandem-player1: #00eae9;
+@t-color-tandem-player2: #ffa049;
+// @t-color-tandem-player1-light: lighten(@t-color-tandem-player1, 10%);
+// @t-color-tandem-player2-light: lighten(@t-color-tandem-player2, 10%);
+
+@t-color-level-normal: @t-color-blue;
+@t-color-level-intermediate: @t-color-blue;
+@t-color-level-mothertongue: #008ed2; // #d48625;
+
+
+@t-color-toccamodule1: #e0be00;
+@t-color-toccamodule2: #5ab45a;
+@t-color-toccamodule3: #5ca9d6;
+@t-color-vocabolario: #be0050;
+@t-color-palloncini: #97c846;
+
+
+@t-color-highlight: #ffe100;
+@t-color-text: @t-color-black;
+@t-color-background: #d8cec5;
+
+@t-color-selection: @t-color-blue;
+
+@t-header-height:             4rem;
+@t-header-background:         @t-color-black;
+// @t-header-small-background:   @t-color-black;
+// @t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
+// @t-header-shadow-teaser:      0 0 150px 1px rgba(0,0,0,0.5);
+@t-header-padding:            0;
+
+
+
+// Redefine basics for this via sub-website
+@via-basic-color: @t-color-black;
+@via-basic-background-color: @t-color-primary;
+// @via-coloredbutton-color: #555;
+// @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
+@wrongColor: @t-color-red;
+@correctColor: #cfc;
+
+
+// =======================================================================
+// DEVELOPMENT ONLY
+// =======================================================================
+
+
+
+
+// =======================================================================
+// Mixins
+// =======================================================================
+
+@import "styles_aurea_mixins.less";
+
+
+// =======================================================================
+// General Styles
+// =======================================================================
+
+html {
+		//bad		height: 100%;
+		//scroll-behavior: smooth;
+}
+
+// Our own SVG icon set
+span.svg-icon {
+		@size: 1.1em;
+		text-align: center;
+		font-size: @size;
+		//height: 1em;
+		width: @size;
+		display: inline-block;
+		svg.svg-icon {
+				//				width: 1.1em;
+				// height: 1em;
+				width: 100%;
+				height: 100%;
+				//stroke: currentcolor;
+				fill: currentcolor;
+				//				font-size: 1.25em;
+				// font-size: 1em;
+		}
+}
+
+body {
+
+		
+		div.coreContainer {
+
+				// Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
+				div {
+						.toccamoduleButton("input.submit");
+						//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+						.toccamoduleButton(".bigButton");
+						.toccamoduleButton("button.uk-button");
+						.toccamoduleButton("a.uk-button");
+
+						// Exception: Inverse buttons for main buttons in a exercise
+						.toccamoduleButton("div.exerciserMainButtons .uk-button", white, true);
+
+				}
+				
+
+				div.core {
+				}
+		}
+
+		div.footer {
+				padding: 40px 50px;
+				background-color: @t-color-black;
+				color: white;
+
+				a {
+						color: white;
+				}
+
+				div.company {
+						margin-bottom: 2em;
+						img.hepLogo {
+								vertical-align: top;
+								width: 230px;
+						}
+						
+						div.address {
+								font-size: 18px;
+								line-height: 28px;
+								margin-top: 2em;
+						}
+						
+				}
+
+				// div.footerMenu {
+				// 		a + a {
+				// 				margin-left: 2em;
+				// 		}
+				// }
+
+
+				
+		}
+
+
+		&.wantColorBackground {
+				min-height: 100vh;
+				background-color: @t-color-primary;
+				div.coreContainer {
+						background-color: @t-color-primary;
+						color: black;
+
+						a {
+								text-decoration: underline;
+						}
+
+				}
+
+				// a {
+				// 		color: black;
+				// 		text-decoration: underline;
+
+				// 		// &:hover {
+				// 		// 		color: #666;
+				// 		// }
+				// }
+		}
+
+		// Styles for the non-logged in public UI
+		&.public {
+
+				// h1, h2, h3 {
+				// 		color: white; "WHY?"
+				// }
+
+				input.submit, button, a.uk-button {
+						color: white;
+						border-color: white;
+				}
+
+				div.coreContainer {
+						a {
+								color: black;
+//								text-decoration: underline;
+
+								&:hover {
+										color: #666;
+								}
+						}
+				}
+		}
+}
+
+// General button styling
+//WEG: Conflict with mediaelement and anyway to general: button
+input.submit, button.uk-button, a.uk-button {
+		.button();
+}
+
+// // Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
+// div {
+// 		.toccamoduleButton("input.submit");
+// //Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+// 		.toccamoduleButton(".bigButton");
+// 		.toccamoduleButton("button.uk-button");
+// 		.toccamoduleButton("a.uk-button");
+// }
+
+div.pillarParagraph {
+		+ div.pillarParagraph {
+				margin-top: 1em;
+		}
+
+		&.border {
+				padding: 0.5em;
+				margin: 0.5em;
+				border: 1px solid black;
+		}
+
+		// Custom styles, used with pillar syntax ((style blablabl))
+		.dialogA {
+				color: lighten(@t-color-black, 25%);
+		}
+
+		.dialogB {
+				color: @t-color-tandem-player1;
+		}
+
+		.dialogC {
+				color: @t-color-tandem-player2;
+		}
+
+		.dialogD {
+				color: #3a4d98;
+		}
+		
+		.dialogE {
+				color: #9ba5c8; // oder eher #5674EB
+		}
+
+		
+		.noWrap {
+				white-space: nowrap;
+		}
+
+		
+		// Custom paragraph styles, used with pillar syntax @@style blablabl
+		&.dialogA {
+				.dialogA();
+		}
+
+		&.dialogB {
+				.dialogB();
+		}
+
+		&.dialogC {
+				.dialogC();
+		}
+
+		&.dialogD {
+				.dialogD();
+		}
+
+		&.dialogE {
+				.dialogE();
+		}
+		
+}
+
+.levelColors() {
+		&.level-l1 {
+				color: @t-color-level-normal;
+		}
+
+		&.level-l2 {
+				color: @t-color-level-intermediate;
+		}
+
+		&.level-l3 {
+				color: @t-color-level-mothertongue;
+		}
+}
+
+.level-l1 {
+		color: @t-color-level-normal;
+}
+
+.level-l2 {
+		color: @t-color-level-intermediate;
+}
+
+.level-l3 {
+		color: @t-color-level-mothertongue;
+}
+
+// =======================================================================
+// UI components
+// =======================================================================
+
+div.mainContainer {
+//		min-height: 99vh;
+		position: relative;
+		box-sizing: border-box;
+		
+		.toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
+		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
+		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
+}
+
+div.VIADeviceDetectorComponent {
+		background-color: @t-color-primary;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.spinner {
+				color: black;
+				font-size: 3rem;
+				// width: 33vw;
+				// height: 33vw;
+		}
+		
+		a.spinnerMessage {
+				.uk-text-muted();
+				color: #666;
+				font-size: 80%;
+		}
+}
+
+//
+// header 
+//
+div.t-header {
+    
+		background-color: @t-header-background;
+		color: white;
+		padding: @t-header-padding;
+		height: @t-header-height;
+
+		a.t-logo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: white;
+
+				svg.toccaLogo {
+						//stroke: currentcolor;
+						fill: currentcolor;
+						width: 2em;
+				}
+		}
+
+		nav {
+				height: @t-header-height;
+
+				// div.uk-navbar-left {
+				// 		padding-left: 0.5em;
+				// }
+				
+				&.t-menubar {
+
+						// div.menubarCenter {
+						// 		.uk-navbar-center();
+						// }
+
+						display: flex;
+						justify-content: space-between;
+
+						div.menubarLeft {
+								display: flex;
+								align-items: center;
+								padding-left: 0.5em;
+								padding-right: 0.5rem;
+						}
+						div.menubarCenter {
+								
+								// &.activeHome {
+								// 		border-color: @t-color-primary;
+								// 		a svg {
+								// 				stroke: @t-color-primary;
+								// 				fill: @t-color-primary;
+								// 		}
+								// }
+								li a span.menuLabel {
+										margin-left: 0.1em;
+								}
+
+						}
+						div.menubarRight {
+								
+						}
+						
+						ul.uk-navbar-nav {
+								height: @t-header-height;
+
+								
+								li {
+										padding-top: 1em;
+
+										&.active, &.activeHome {
+												//										background-color: @t-color-toccamodule1;
+												border-bottom-width: 8px;
+												border-bottom-style: solid;
+												// a {
+												// 		svg {
+												// 				stroke: @t-color-toccamodule1;
+												// 				fill: @t-color-toccamodule1;
+												// 		}
+														
+												// }
+												
+										}
+
+										// The Home-Icon does not get the module color, but the primary color
+										&.activeHome {
+												border-color: @t-color-primary;
+												a svg {
+														stroke: @t-color-primary;
+														fill: @t-color-primary;
+												}
+										}
+								}
+								span.svg-icon {
+										width: 1.3em;
+										font-size: 1.3em;
+								}
+						}
+
+						
+						// button {
+						// 		color: white;
+						// 		vertical-align: middle;
+						// 		background-color: transparent;
+						// 		border: none;
+						// 		cursor: pointer;
+						// }
+
+						a {
+								color: white;
+								vertical-align: middle;
+
+								+ a {
+										margin-left: 0.5rem;
+								}
+								
+								&.mainMenuToggler {
+										span.uk-icon {
+												margin-right: 0.2em;
+										}
+								}
+						}
+
+						form.searchForm {
+								
+								input.searchInput {
+										background-color: white;
+										color: black;
+										//width: 3em;
+
+										&::placeholder {
+												color: #999;
+										}
+								}
+						}
+
+				}
+		}
+		
+
+		// Menu, in navbar or in offcanvas
+		#mainMenu {
+				ul.uk-nav {
+						li {
+								font-size: 1.1rem;
+								font-weight: bold;
+
+								ul.uk-nav-sub {
+										li {
+												font-size: 1.1rem;
+												font-weight: normal;
+										}
+								}
+
+						}
+
+				}
+
+				&.uk-offcanvas {
+						//						color: white;
+						div.uk-offcanvas-close {
+								span.svg-icon {
+										font-size: 2em;
+								}
+						}
+						
+						ul.uk-nav {
+								li {
+										a {
+												//												color: white;
+												white-space: nowrap;
+
+												span.svg-icon, svg.svg-inline--fa.icon {
+														text-align: center;
+														display: inline-block;
+														width: 1.5rem;
+														//height: 1rem;
+												}
+
+												span.menuEntryText {
+														.uk-text-truncate();
+												}
+										}
+
+										&.logout {
+												padding-top: 1em;
+										}
+								}
+						}
+
+						div.uk-offcanvas-bar {
+								overflow-y: hidden;
+								
+								div.mainMenuContainer {
+										// position: absolute;
+										// bottom: 0;
+										// top: 0;
+										height: 100%;
+										display: flex;
+										flex-direction: column;
+										justify-content: space-between unsafe;
+										align-items: stretch;
+										overflow-y: auto;
+
+										div.mainMenuItems {
+												flex-grow: 1;
+												flex-shrink: 1;
+										}
+										
+										div.mainMenuFooter {
+												// position: absolute;
+												// bottom: 0;
+												padding-top: 2em;
+												flex-grow: 0;
+												flex-shrink: 0;
+
+												img.hepLogo {
+														width: 50%;
+														//										width: @offcanvas-bar-width
+												}
+										}
+
+								}
+								
+						}
+				}
+		}
+}
+
+
+div.inputDialog {
+		input[type=text], textarea {
+				width: 100%;
+				font-size: 120%;
+				margin: 1em 0;
+		}
+}
+
+div.VIAConfirmationComponent {
+		button {
+				min-width: 5em;
+				margin-right: 1em;
+		}
+}
+
+div.VIAPublicHomeComponent {
+
+		padding-bottom: 1em;
+		
+		div.toccaBanner {
+				// background-color: @t-color-red;
+				// background-image: url(/site/images/public_banner.jpg);
+				// background-repeat: no-repeat;
+				// background-size: cover;
+				padding: 0;
+				margin: 0;
+
+				// img.bannerImage {
+				// 		margin-bottom: 1em;
+				// }
+				
+				// div.title {
+				// 		background-image: url(/site/images/public_banner.jpg);
+				// 		background-repeat: no-repeat;
+				// 		background-size: cover;
+				// 		font-size: 4rem;
+				// 		line-height: 4rem;
+				// 		color: white;
+				// 		padding: 1em 0;
+				// 		text-align: center;
+				// 		margin-bottom: 1rem;
+				// }
+		}
+		
+		div.loginSection {
+				margin: 2em 0;
+				font-size: 120%;
+				
+				.bigButtonStyle(@t-color-primary, white, true);
+
+		}
+
+		div.infoButtons {
+				//				.bigButtonStyle(@t-color-red);
+				div.infoButton {
+						font-size: 120%;
+						line-height: 150%;
+				}
+		}
+
+}
+
+div.VIAMyHomeComponent {
+
+		div.startArea {
+				background-color: @t-color-primary;
+				.bigButtonStyle(white, @t-color-primary);
+				
+		}
+		
+		div.infoButtons {
+				.bigButtonStyle(@t-color-blue);
+		}
+
+}
+
+
+
+div.VIAAurLoginComponent {
+		height: 100%;
+//		background-color: @t-color-primary;
+		
+		h1 {
+				text-align: center;
+		}
+}
+
+div.VIAAureaStartComponent {
+		padding: 2em 0;
+
+		div.VIAModuleFinderComponent {
+				margin-bottom: 2em;
+		}
+}
+
+div.VIAModuleFinderComponent {
+
+//		max-width: 50em;
+		padding-top: 1em;
+
+		.goButton() {
+				background-color: red;
+				color: white;
+		}
+
+		.focus() {
+				background-color: @t-color-selection;
+				color: white;
+				outline: none;				
+		}
+
+		div.searchBar {
+				border: 1px solid black;
+				padding: 0 0 0 0.1em;
+				position: relative;
+				@fontsize: 1.5rem;
+				line-height: 1.5em;
+				font-size: @fontsize;
+				
+				input[type=text] {
+						font-size: @fontsize;
+						border: none;
+						display: inline-block;
+						
+
+						&.searchInputText {
+						}
+
+						&:focus {
+								.focus();
+								border: none;
+						}
+				}
+
+
+				span.searchInput {
+						font-size: @fontsize;
+						display: inline-block;
+						line-height: 1em;
+						height: 1em;
+						padding: 0.1em;
+						margin: 0.1em;
+						vertical-align: bottom;
+						
+						&.searchInput1 {
+								width: 0.7em;
+						}
+
+						&.searchInput2 {
+								width: 3em;
+						}
+
+						// &.searchInput1, &.searchInput2, &.searchInputText {
+						// }
+
+						&.focused {
+								.focus();
+						}
+				}
+
+				
+				span.dot {
+						font-size: @fontsize;
+						display: inline-block;
+						width: 0.5em;
+						margin-right: 0.1em;
+						text-align: center;
+						font-weight: bold;
+				}
+
+				button.go {
+						.goButton();
+						font-size: @fontsize;
+						border: none;
+						position: absolute;
+						top: 0;
+						height: 100%;
+						right: 0;
+				}
+		}
+
+		div.keyboard {
+				.noUserSelect();
+				margin: 1em 0;
+
+				&.disabled {
+						visibility: hidden;
+				}
+				
+				.keyboardButton {
+						@color: #666;
+						
+						font-size: 1.5rem;
+						padding: 0.4em 0;
+						background-color: @color;
+						color: white;
+						text-align: center;
+						display: inline-block;
+						width: 100%;
+						height: 1.2em;
+						border: none;
+						margin: 0;
+						box-sizing: content-box;
+						cursor: pointer;
+
+						&:hover {
+								background-color: lighten(@color, 30%);
+						}
+
+						&.go {
+								.goButton();
+						}
+				}
+		}
+
+		// div.VIAModulesListComponent {
+		// 		margin-top: 1em;
+		// }
+				
+
+}
+
+div.VIAModulesListComponent {
+		padding-top: 1em;
+}
+
+
+div.VIAAurModuleExerciser {
+
+		// Header gets units background color
+//		.toccamoduleBackgroundColor("h1.moduleNavigation, div.moduleBottomNavigation");
+		.toccamoduleBackgroundColor("div.moduleNavigation");
+		
+		div.moduleNavigation {
+				// font-size: @base-h1-font-size;
+				// //line-height: 1.2em;
+				// font-weight: 600;
+
+				margin: 0;
+				color: white;
+				text-align: center;
+				padding: 0;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: sticky;
+				top: @t-header-height;
+				z-index: 99;
+
+				a {
+						color: inherit;
+				}
+
+				span {
+						vertical-align: middle;
+						white-space: nowrap;
+				}
+
+				span.left {
+						font-size: @base-h1-font-size;
+//						line-height: @base-h1-line-height;
+						text-align: left;
+						display: inline-block;
+						width: 3em;
+						padding-left: 0.2em;
+
+						// a.uk-button {
+						// 		vertical-align: top;
+						// }
+				}
+
+				span.center {
+						font-size: @base-h1-font-size;
+						line-height: @base-h1-line-height;
+						font-weight: 600;
+						display: inline-block;
+				}
+				
+				span.right {
+						font-size: @base-h1-font-size;
+						text-align: right;
+						display: inline-block;
+						width: 3em;						
+						padding-right: 0.2em;
+				}
+				
+				span.arrow {
+						// margin: 0 0.5em;
+						display: inline-block;
+						width: 2em;
+				}
+
+				span.backText {
+						font-weight: normal;
+				}
+		}
+
+
+		div.moduleBottomNavigation {
+				margin: 1em 0 0 0;
+//				color: ;
+				text-align: center;
+				padding: 0.3em;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				a {
+						color: inherit;
+				}
+
+				span {
+						vertical-align: middle;
+						white-space: nowrap;
+				}
+		}
+
+
+		
+		h2.moduleTitle {
+				color: @t-color-blue;
+				text-align: center;
+				margin-top: 0.5em;
+				margin-bottom: 1em;
+				padding-left: 0.2em;
+				padding-right: 0.2em;
+
+				.levelColors();
+
+				span.level {
+						width: 1em;
+						display: inline-block;
+						position: relative;
+						margin-left: -1em;
+//						margin-right: -1em;
+						top: -0.5em; // Optical centering
+						img.level {
+								height: 0.5em;
+								vertical-align: baseline;
+						}
+				}
+
+				// &.allMothertongue {
+				// 		color: @t-color-level-mothertongue;
+				// }
+		}
+
+		div.moduleBody {
+				margin: 0 0.5em;
+				padding-bottom: 1em;
+		}
+
+		// Accordion top line
+
+		.fatLineDivider() {
+				border-top-width: 2px;
+				border-top-style: solid;
+				border-top-color: #333;
+		}
+
+
+		div.accBar {
+				.fatLineDivider();
+//				padding: 1em 0;
+				margin: 0;
+				cursor: pointer;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: stretch;
+
+
+
+				@ignoredColor: #666;
+				@pad: 0.1em;
+
+				a {
+						color: inherit;
+				}
+				
+				&.ignored {
+						//						background-color: #eee;
+						cursor: default;
+
+						.accTitle {
+								color: @ignoredColor;
+								text-decoration-line: line-through;
+								text-decoration-color: black;
+								text-decoration-style: double;
+						}
+						
+				}
+				
+				&.isOpen {
+						background-color: #eee;
+						.accToggle {
+								.doOpen {display:none}
+								.doClose {display:inline}
+						}
+				}
+
+				
+				div.left {
+						padding: @pad 0;
+						display: flex;
+						justify-content: flex-start;
+						align-items: flex-start;
+
+						span.level {
+								width: 2em;
+								padding-top: 0.2em;
+								flex-shrink: 0;
+								align-self: center;
+								display: inline-block;
+								// position: relative;
+								// top: 2px; // Optical centering
+								img.level {
+										height: 1em;
+										vertical-align: baseline;
+								}
+						}
+
+						
+						.accTitle {
+								padding: 0.5em 0;
+								margin: 0;
+								margin-right: 0.6em;
+								display: inline;
+								color: @t-color-blue;
+								text-align: left;
+						}
+
+
+						span.accIcons {
+								padding: 0.5em 0;
+								flex-shrink: 0;
+								
+								//						margin-left: 1em;
+								img.iconActivityType {
+										vertical-align: text-top;
+										width: 2em;
+										height: auto;
+								}
+						}
+						
+				}
+
+				//&.facoltativo
+				&.mothertongue  {
+						div.left {
+								.accTitle {
+										color: @t-color-level-mothertongue;
+								}
+						}
+				}
+
+				div.right {
+//						display: flex;
+						white-space: nowrap;
+						flex-shrink: 0;
+						padding: @pad 0;
+						
+						span.accActions {
+								vertical-align: middle;
+								display: inline-block;
+								font-size: 1.5rem;
+								margin: 0.3em 1em;
+
+								a.ignoreTask {
+										svg.fa-toggle-off {
+												color: @ignoredColor;
+										}
+										svg.fa-toggle-on {
+												color: green;
+										}
+								}
+						}
+
+						.accToggle {
+								vertical-align: middle;
+								display: inline-block;
+								font-size: 2rem;
+
+								// display: inline-flex;
+								// justify-content: space-between;
+								// align-items: center;
+								
+								// .icon {
+								// 		vertical-align: middle;
+								// }
+								
+								.doOpen {display:inline}
+								.doClose {display:none}
+						}
+						
+				}
+				
+
+		}
+
+		div.taskExercise {
+
+				// If opened and waiting for content, we want to see at least whitespace
+				min-height: 5em;
+				
+				&.hiddenTaskExercise {
+						.hiddenSectionButWithDefinedDimension();
+				}
+				+ .noTitleTaskExercise {
+						.fatLineDivider();
+				}
+		}
+
+		// div.teacherMenu {
+		// 		font-size: 80%;
+		// 		margin: 0.5em;
+		// }
+
+		// Exercise displayer for every task (in a module)
+}
+
+
+div.VIAAurTaskExerciser {
+		padding-left: 0.2em;
+		padding-right: 0.2em;
+		margin-bottom: 4em;
+}
+
+// Not inside the VIAAurModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
+// Styles inside the content of tasks
+div.exercise {
+		
+		@dropTargetHoverColor: yellow;
+		
+		// Wozu?
+//		margin-bottom: 50px;
+
+		// General wrapping styles for backend usage
+		.spaced {
+				letter-spacing: 0.1em;
+				line-height: 1.6em;
+		}
+		.framed {
+				padding: 10px;
+				margin: 15px 0;
+				border: 1px solid #aaa;
+		}
+		.smaller {
+				font-size: 88%;
+		}
+		.indented {
+				margin-left: 10%;
+				margin-right: 10%;
+		}
+
+		
+		div.topToolbar {
+				//								float: right;
+				// .bigButton.ignoreTask {
+				// 		margin-top: 0.5em;
+				// 		height: 1.5em;
+				// }
+		}
+
+		// Titles inside task content, should not be as big as official titles
+		h1, h2, h3 {
+				font-weight: bold;
+				text-align: left;
+				line-height: 1em;
+				margin-top: 1em;
+				margin-bottom: 0.5em;
+		}
+
+		h1 {
+				font-size: 120%;
+		}
+
+		h2 {
+				font-size: 110%;
+		}
+
+		h3 {
+				font-size: 100%;
+		}
+
+		table {
+				//						border: 1px solid #999;
+				border-collapse: collapse;
+
+				tr {
+						border-bottom: 1px solid #999;								
+				}
+
+				td, th {
+						padding-top: 5px;
+						padding-bottom: 5px;
+						padding-right: 2px;
+				}
+
+				td + td, th + th {
+						border-left: 1px solid #999;
+						padding-left: 2px;
+				}
+		}
+
+		
+		input[type=text] {
+				font-family: inherit;
+				font-size: inherit;
+				padding: 0 2px;
+				margin: -2px 0;
+		}
+
+		input[type=text].clozeTextPlaceholder {
+				.clozeTextPlaceholder;
+
+				&:focus {
+						outline: 1px solid #ccc;
+						background-color: #ffd;
+				}
+
+				// Intentionally set as empty by user
+				&.markedAsEmpty {
+						background-color: black;
+				}
+		}
+
+		span.emptyAnswerPlaceholder {
+				font-style: italic;
+		}
+
+		span.markAsEmpty {
+				cursor: pointer;
+				// border: 2px solid black;
+				//						padding: 0 3px;
+
+				// &.active {
+				// 		background-color: green;
+				// }
+		}
+
+		
+		input, select, textarea {
+				// font-family: @base-body-font-family;
+		}
+
+		p {
+				margin-top: 3px;
+				margin-bottom: 3px;
+		}
+
+		hr.divider {
+				border-color: #999;
+				margin: 2em 0;
+		}
+
+
+
+		div.p2pStatus, div.talkmasterStatus {
+
+				
+				//border: 2px solid green;
+				//				margin: 0.5em;
+				//						padding: 0.3em;
+				display: inline-block;
+				// font-size: 60%;
+				color: #eee;
+				span.p2pIcon {
+						font-size: 75%;
+				}
+
+				&.open {
+						//						background-color: grey;
+						color: black;
+				}
+
+				&.data {
+						color: green;
+				}
+
+				&.error {
+						// border: 2px solid red;
+						color: orange;
+						//color: red;
+				}
+		}
+		
+		
+		div.selectOneInput, div.selectPointsInput {
+				margin-bottom: 10px;
+
+				label:hover {
+						background-color: #eee;
+				}
+
+				span.wrongIcon {
+						position: relative;
+						left: -15px;
+				}
+
+
+		}
+
+
+		div.selectOneInput, div.selectMany {
+
+				.bigButtonStyle(@t-color-blue);
+
+				label.bigButton {
+						//								text-align: left;
+						position: relative;
+						padding-left: 1.5em;
+						padding-right: 1.5em;
+
+						.checkedIcon {
+								visibility: hidden;
+								position: absolute;
+								left: 0.3em;
+								z-index: 999;
+						}
+
+						&.active {
+								.checkedIcon {
+										visibility: visible;
+								}
+
+								&.wrong {
+										background-color: @wrongColor;
+										// .checkedIcon {
+										// 		visibility: hidden;
+										// }
+								}
+
+								&.correct {
+										// inverted text, so darken:
+										background-color: darken(@correctColor, 55%);
+								}
+
+
+						}
+
+				}
+
+		}
+		
+		div.selectOneInput {
+
+				select.selectOneInput {
+						max-width: 100%;
+				}
+
+
+		}
+
+		div.selectMany {
+				// label:hover {
+				// 		background-color: #eee;
+				// }
+
+				span.hintSymbol {
+						display: inline-block;
+						margin: 1em 0;
+				}
+
+				// span.wrongIcon {
+				// 		position: relative;
+				// 		left: -15px;
+				// }
+
+		}
+		
+		div.clozeText {
+				line-height: 1.8em;
+
+				div.selectOneInput {
+						display: inline-block;
+				}
+
+
+				span.dragDropDraggable {
+						.draggable();
+						
+						background-color: #eee;
+						padding: 1px 2px;
+						border: 1px solid #ccc;
+
+						// margin-bottom: 10px;
+						// line-height: normal;
+						display: inline-block;
+
+						&:hover {
+								border: 1px solid black;
+						}
+
+						figure.inlineAssetImage {
+								display: inline-block;
+
+								figcaption {
+										display: none;
+								}
+						}
+						
+				}
+				
+				span.dragDropTarget {
+						display: inline-block;
+						min-width: 100px;
+						background-color: #eee;
+						padding-left: 5px;
+						padding-bottom: 1px;
+						min-height: 1em;
+						border-top: none;
+						border-left: none;
+						border-right: none;
+						border-bottom: @borderBottomClozePlaceholders;
+
+						.dropHover();
+
+						// Drag element in a drop container
+						span.dragDropDraggable {
+								margin-right: 10px;
+						}
+
+						// Container, combining correction and element
+						span.draggableContainer {
+								white-space: nowrap;
+								display: inline-block;
+						}
+				}
+
+				div.dragDropDraggables {
+						background-color: #eee;
+						border: 1px dotted black;
+						margin: 10px 0;
+						padding: 0.5em 5px;
+						min-height: 20px;
+
+						.dropHover();
+						
+						span.dragDropDraggable {
+								.draggable();
+								
+								margin: 5px;
+								// line-height: normal;
+								display: inline-block;
+
+								figure.inlineAssetImage {
+										display: inline-block;
+
+										figcaption {
+												display: none;
+										}
+										
+										// span.assetInfo {
+										// 		.uk-text-muted();
+										// 		cursor: pointer;
+										// 		float: right;
+										// }
+								}
+								
+						}
+				}
+
+		}
+
+		div.exerciserMainButtons {
+				margin-top: 30px;
+
+				// // .toccamoduleButton("input.submit");
+				// // //Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+				// // .toccamoduleButton(".bigButton");
+				// // .toccamoduleButton("button.uk-button");
+				// // .toccamoduleButton("a.uk-button");
+
+				// .toccamoduleButton(".uk-button", white, true);
+		}
+
+
+		div.audioPlayer {
+				.clearfix();
+
+				margin: 10px 0px;
+				span.assetInfo {
+						float: right;
+				}
+
+				
+				div.transcriptionContainer {
+
+						div.transcriptionText {
+								font-size: 90%;
+								line-height: normal;
+						}
+
+						
+						div.audioTranscription {
+								&.disabled {
+										.uk-hidden();
+								}
+
+								button.printThis {
+										float: right;
+								}
+						}
+				}
+		}
+
+		
+		div.videoPlayer {
+				.clearfix();
+				
+				div.videoContainer {
+						margin-right: 10px;
+
+						video {
+								width: 100%;
+								height: auto;
+								//box-sizing: border-box;
+						}
+				}
+
+				div.transcriptionContainer {
+
+						div.videoTranscription {
+								&.disabled {
+										.uk-hidden();
+								}
+
+								button.printThis {
+										float: right;
+								}
+						}
+
+						div.transcriptionText {
+								font-size: 90%;
+								line-height: normal;
+						}
+				}
+
+				span.assetInfo {
+						float: right;
+				}
+		}
+
+		div.youtubePlayer, div.vimeoPlayer, div.srgVideoPlayer {
+				position: relative;
+				width: 100%; // Can be reduced by responsive rules
+				max-width: 100%;
+
+				> div.aspectRatioBox {
+						position: relative;
+						width: 100%;
+						padding-bottom: 56.25%; // Trick: Keeps 16:9 ratio, see https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
+
+						iframe {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+						}
+
+
+				}
+				
+		}
+
+		div.imageDisplayer {
+				span.image {
+						display: inline-block;
+						text-align: right;
+						img {
+								display: block;
+						}
+						span.assetInfo {
+						}
+						
+				}
+		}
+
+		div.fileDownloader {
+				a {
+						.icon {
+								margin-right: 0.5em;
+						}
+
+						img.downloadPreview {
+								max-width: 10em;
+								border: 1px solid #eee;
+						}
+
+						&:hover {
+								img.downloadPreview {
+										max-width: 10em;
+										border-color: @base-link-color;
+								}
+								
+						}
+				}
+				span.assetInfo {
+						margin-left: 0.5em;
+				}
+				
+		}
+
+		span.assetInfo {
+				.uk-text-muted();
+				cursor: pointer;
+		}
+
+		span.hintSymbol {
+				display: inline-block;
+				margin: 0.2em;
+				//						vertical-align: middle;
+		}
+
+
+		// Obsolete? Wir haben nur click-click und kein drag-drop bei tocca
+		div.mapPairs {
+				@pairBorder: 1px solid black;
+				
+				border-top: @pairBorder;
+				display: table;
+				border-collapse: collapse;
+				
+				div.objectPair {
+						display: table-row;
+						border-bottom: @pairBorder;
+
+						.dropHover();
+
+						span.hintSymbol {
+								float:left;
+								margin-left: -20px;
+								margin-top: 10px;
+						}
+						
+						div.leftObject {
+								display: table-cell;
+								padding-left: 10px;
+						}
+
+						div.middleColumn {
+								display: table-cell;
+						}
+
+						div.rightObject {
+								@dragHandleOffset: 25px;
+
+								display: table-cell;
+								padding: 5px 10px 5px (@dragHandleOffset + 10px);
+
+								div.objectPairDraggable {
+										background-color: #eee;
+										padding: 10px;
+										border: 1px solid #ddd;
+										margin-bottom: 10px;
+
+										.draggable();
+
+										&:hover {
+												border: 1px solid #333;
+										}
+
+										&:only-child {
+												margin-bottom: 0;
+										}
+
+										&:not(:first-child) {
+												background-color: #f99;
+										}
+
+										span.dragHandle {
+												position: absolute;
+												margin-left: -@dragHandleOffset;
+										}
+
+								}
+						}
+				}
+		}
+
+
+		div.mapPairsClickClick {
+				@pairBorder: 2px solid black;
+				
+				//						border-top: @pairBorder;
+				display: table;
+				border-collapse: collapse;
+
+
+				div.head {
+						display: table-row;
+						//								border-bottom: @pairBorder;
+						div {
+								display: table-cell;
+								text-align: left;
+								padding-left: 2em;
+								padding-bottom: 5px;
+						}
+				}
+
+				div.objectPair {
+						display: table-row;
+						//								border-bottom: @pairBorder;
+
+						.selection() {
+								&:hover {
+										background-color: lightyellow;
+								}
+								&.selected {
+										background-color: yellow;
+								}
+								&.correct {
+										background-color: @correctColor;
+								}
+
+						}
+						
+						span.hintSymbol {
+								float:left;
+								margin-left: -20px;
+								margin-top: 10px;
+						}
+						
+						div.leftObject {
+								display: table-cell;
+								border: @pairBorder;
+								padding: 3px 22px 5px 10px;
+								cursor: pointer;
+								vertical-align: middle;
+								.selection();
+						}
+
+						// div.middleColumn {
+						// 		display: table-cell;
+						// 		width: 30px;
+						// 		text-align: right;
+						// 		padding: 0;
+						// 		//background-color: black;
+						// }
+
+						div.rightObject {
+								display: table-cell;
+								border: @pairBorder;
+								padding: 3px 10px 5px 10px;
+								cursor: pointer;
+								position: relative;
+								vertical-align: middle;
+								.selection();
+
+								svg.puzzle {
+										position: absolute;
+										left: -19px;
+										top: calc(50% - 9px);
+										width: 20px;
+										.inlet {
+												fill: white;
+										}
+
+								}
+
+								&.selected {
+										svg.puzzle {
+												.inlet {
+														fill: yellow;
+												}
+										}
+								}
+
+								&:hover {
+										svg.puzzle {
+												.inlet {
+														fill: lightyellow;
+												}
+										}
+								}
+
+								&.correct {
+										svg.puzzle {
+												.inlet {
+														fill: @correctColor;
+												}
+										}
+								}
+
+						}
+
+						div.endColumn {
+								display: table-cell;
+						}
+
+				}
+		}
+		
+		div.score {
+				margin-top: 2em;
+				// background-color: white;
+				font-weight: bold;
+		}
+
+
+		div.objectPairDragHelper {
+				padding: 10px;
+				border: 1px solid black;
+		}
+
+		div.highlightAreas {
+
+				@highlightColor: lighten(@t-color-selection, 20%);
+				background-color: white;
+				
+				.noUserSelect();
+//				.noTouch();
+				touch-action: pan-y;
+				letter-spacing: 0.1em;
+				.spaced();
+				.framed();
+				//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
+				// padding: 10px;
+				// margin: 15px 0;
+				// border: 1px solid #aaa;
+
+				span.highlightArea.solution {
+						border: 1px solid #333;
+						padding-left: 1px;
+				}
+
+				div.pillarParagraph:first-child {
+						margin-top: 0;
+				}
+
+				span.selChar {
+						cursor: url('/images/horizontal-text-select.cur'), text;
+						background-color: white;
+						&.highlighted {
+								background-color: @highlightColor; // redundant
+								color: white;
+								padding-top: 1px;
+//								cursor: pointer;
+								cursor: url('/images/selection-remove.cur'), pointer;
+
+								// &.touchedNow {
+								// 		background-color: @highlightColor;
+								// }
+								
+						}
+						&.selected {
+								color: white;
+								background-color: @t-color-selection !important;
+						}
+
+						// // Should be stronger than "highlighted" above
+						// &.highlightedNow {
+						// 		background-color: @highlightColor;
+						// }
+
+				}
+
+
+				// If not first take, then we need to show correction. All highlighted elements are wrong
+				// except the ones which are in a correct highlight area
+				// A bit dirty, but OK
+				&.checked {
+						span.selChar {
+								&.highlighted {
+										background-color: @wrongColor;
+								}
+
+								// Should be stronger than "highlighted" above
+								&.highlightedNow {
+										background-color: @highlightColor;
+								}
+						}
+				}
+				// &:not(.checked) {
+				// 		span.selChar.highlighted {
+				// 				background-color: @highlightColor;
+				// 		}
+				// }
+
+				
+				span.highlightArea.correct {
+						span.selChar.highlighted {
+								color: unset;
+								background-color: @correctColor;
+						}
+				}
+
+
+		}
+
+		div.taskGroup {
+				
+				div.taskGroupItem {
+						margin: 10px 0px;
+				}
+		}
+
+		div.taskBrickGroupToggler {
+				padding: 0.5em 3px;
+				margin: 0.5em 0;
+				cursor: pointer;
+				background-color: #eee;
+				//						color: white;
+				border: none;
+
+				&:hover {
+						background: #999;
+				}
+		}
+
+		div.taskBrickGroup {
+				// border: 1px solid black;
+				padding: 5px;
+
+				&.hidden {
+						.hiddenSectionButWithDefinedDimension()
+				}
+
+		}
+		
+		
+
+		// See also via base styles
+		div.VIAUserPairingComponent {
+
+				div.pairingStatus {
+						span.pairingMessage {
+								color: green;
+						}
+						div.pairingExpired {
+								color: red;
+						}
+						
+				}
+				
+				// .pairingCode() {
+				// 		border: 2px solid black;
+				// 		padding: 0.3em;
+				// 		font-size: 180%;
+				// }
+
+				// div.pairingStatus {
+				// 		margin: 1em 0;
+
+				// 		div.pairingMessage {
+				// 				margin: 1em 0;
+				// 				color: green;
+				// 		}
+				// }
+				
+				&.VIAUserPairingPassiveComponent {
+						div.yourId {
+								span.theId {
+										display: inline-block;
+										background-color: #eee;
+										letter-spacing: 0.2em;
+										//												padding-right: -0.5em;
+								}
+						}
+				}
+
+				// &.VIAUserPairingActiveComponent {
+				// 		div.explanation {
+				// 				margin: 0.5em 0;
+				// 		}
+
+				// 		div.codeInputContainer {
+				// 				input.codeInput {
+				// 						.pairingCode();
+				// 						font-family: monospace;
+				// 						width: 3em;
+				// 						margin-right: 1em;
+				// 				}
+
+				// 				.uk-button {
+				// 						font-size: 150%;
+				// 				}
+				// 		}
+				// }
+		}
+		
+		
+		// Tandem sequence
+		div.VIATandemSequenceExerciser {
+
+				@radius: 0.5em;
+				@nonGameCardColor: #ddd;
+
+				.playerLabel(@circleSize) {
+						// 								span.playerCharContainer {
+						// 										margin: 0 1em;
+						// 										display: flex;
+						// 										justify-content: center;
+						// 										align-items: center;
+
+						// 	//									display: inline-block;
+						// 										font-size: @circleSize;
+						// 										// font-size: 0.7 * @circleSize;
+						// 										padding: 0.3 * @circleSize;
+						// 										background-color: white;
+						// 										width: @circleSize;
+						// 										height: @circleSize;
+						// //										text-align: center;
+						// 										border-radius: 50%;
+						// //										vertical-align: middle;
+						// //										line-height: @circleSize;
+
+						// Defined outside, could be standalone
+						span.playerChar {
+								display: inline-block;
+								//font-size: @circleSize;
+								font-size: 0.7 * @circleSize;
+								//padding: 0.3 * @circleSize;
+								background-color: white;
+								width: @circleSize;
+								height: @circleSize;
+								text-align: center;
+								border-radius: 50%;
+								vertical-align: middle;
+								line-height: @circleSize;
+								padding-left: 0.05em;
+								margin-right: -0.05em;
+								padding-bottom: 0.05em;
+								margin-top: -0.05em;
+
+						}
+
+						span.playerLabel {
+
+								span.playerLabelContent {
+										position: relative;
+
+										span.playerIsMe {
+												display: inline-block;
+												background-color: #fffd37;
+												color: #000000;
+												border: 1px solid #ccc;
+												border-radius: 0.5em;
+												//transform: rotate(-20deg);
+												font-size: 0.7rem;
+												font-weight: normal;
+												padding-left: 0.3em;
+												padding-right: 0.3em;
+												position: absolute;
+												left: -40%;
+												top: -20%;
+										}
+								}
+						}
+				}
+				
+				.ajaxAction {
+						display: contents;
+						cursor: pointer;
+				}
+				
+				.card {
+						display: block;
+						position: relative;
+						border-radius: @radius;
+						padding: 1em;
+
+						.uk-button {
+								border-color: black;
+								color: inherit;
+								background-color: transparent;
+								font-weight: bold;
+						}
+				}
+				
+				// .randomCode {
+				// 		font-size: 200%;
+				// 		margin: 0.5em 0;
+				// }
+
+				// div.randomCodes {
+				// 		margin: 0.5em 0;
+
+				// 		.randomCode {
+				// 				text-align: center;
+				// 		}
+				// }
+
+				div.p2pStatus, div.talkmasterStatus {
+						//								display: none;
+						margin: 1.5em 0;
+						// float: right;
+						// &.error {
+						// 		display: inline-block;
+						// }
+				}
+
+				
+				a.chooser {
+						.card();
+						text-align: center;
+						padding: 0.2em;
+						padding-bottom: 3em;
+						
+						.playerLabel(3rem);
+						span.playerChar {
+								margin: 0.2em 0;
+						}
+
+						span.buttonish {
+								//										margin: 0.5em 0;
+								//display: inline-block;
+								position: absolute;
+								width: 80%;
+								bottom: 0.4em;
+								left: 10%;
+								box-sizing: border-box;
+								line-height: 2em;
+								//										border: 1px solid #333;
+								text-transform: uppercase;
+						}
+
+						.icon {
+								font-size: 1.5em;
+						}
+
+						// .button {
+						// 		line-height: 2em;
+						// }
+						
+				}
+
+				div.pairer {
+						.card();
+						//background-color: @nonGameCardColor;
+				}
+
+				
+				div.questionAndAnswer {
+						//						padding: 1em;
+						@biggerFont: 150%;
+						@otherPlayerFontColor: #666;
+						@padding: 1rem;
+						@iconSize: 4rem;
+
+						// div.body {
+						// 		padding-top: 0.5em;
+						// }
+
+						.playerLabel(2rem);
+
+						div.question {
+								.card();
+								//								margin-bottom: 2em;
+								position: relative;
+								z-index: 10;
+
+								span.playerLabel {
+										float: right;
+										margin-bottom: 0.5em;
+										margin-left: 0.3em;
+										//position: absolute;
+										// right: 0.5em;
+										// top: 0.5em;
+								}
+
+
+								div.explanation {
+										margin-top: 1em;
+										margin-bottom: 1em;
+
+										div.audioPlayer {
+												display: inline-block;
+												width: 80%;
+										}
+								}
+
+								div.body {
+										margin-top: 1em;
+										margin-bottom: 1em;
+								}
+
+								div.questionIcon {
+										text-align: center;
+										.icon {
+												font-size: @iconSize;
+												margin-right: 0.1em;
+										}
+								}
+						}
+
+						
+						div.answer {
+								.card();
+								position: relative;
+								z-index: 5;
+								top: -1.5 * @radius;
+								margin-bottom: -1.5 * @radius;
+								padding-left: @padding;
+								padding-right: @padding;
+								padding-bottom: @padding * 0.1;
+								padding-top: 2.5 * @radius;
+								margin-top: 0;
+								//font-size: @biggerFont;
+
+								span.playerLabel {
+										// float: right;
+										// margin-bottom: 0.5em;
+										// margin-left: 0.3em;
+										position: absolute;
+										right: 0.5em;
+										top: 1.2em;
+								}
+								
+
+								div.answerIcon {
+										//font-weight: bold;
+										text-align: center;
+										cursor: pointer;
+										z-index: 20;
+										.icon {
+												font-size: @iconSize;
+
+												&.answer {
+														// svg {
+														// 		stroke-width: 1px;
+														// 		stroke: black;
+														// }
+														// font-size: @iconSize * 0.6;
+														// position: relative;
+														// top: -0.5em;
+												}
+												&.dropdown {
+														font-size: @iconSize * 0.6;
+														position: relative;
+														top: -0.1em;
+														svg {
+																stroke-width: 2px;
+																stroke: black;
+														}
+												}
+										}
+								}
+
+								div.body {
+
+										position: relative;
+										
+										&.partlyHidden {
+												div.answerContent {
+														display: none;
+												}
+												div.interaction {
+														margin: 0;
+														height: 1em;
+														overflow: hidden;
+														opacity: 0.3;
+														filter: saturate(50%);
+														pointer-events: none;
+														position: absolute;
+														bottom: 0;
+														//																margin-top: -2em;
+														z-index: 10;
+														width: 100%;
+
+														div.goAheadButton {
+																display: none;
+														}
+
+												}
+
+										}
+
+										// div.answerContent {
+										// 		div.answerContent {
+										// 				display: none;
+										// 		}														
+										// }
+										
+										div.interaction {
+												margin: 1em 0;
+												text-align: center;
+
+
+												div.correctionButtons {
+														margin: 0;
+														display: flex;
+														justify-content: space-evenly;
+
+														// Buttons
+														a, .spinner, svg.icon {
+																font-size: 300%;
+														}
+
+														div.spinner {
+																display: none;
+														}
+												}
+
+												div.goAheadButton {
+														svg.icon {
+																font-size: 300%;
+														}
+												}
+										}
+								}
+
+						}
+
+						&.hiddenAnswer {
+								div.question {
+										//										font-size: @biggerFont;
+								}
+								// div.answer {
+								// 		height: 2em;
+								// 		padding: 0;
+								// }
+						}
+
+						&.current {
+								&.hiddenAnswer {
+										div.question {
+												//														font-size: @biggerFont;
+										}
+								}
+
+								&.withAnswer {
+										div.question {
+												div.explanation {
+														color: @otherPlayerFontColor;
+												}
+
+												div.body {
+														color: @otherPlayerFontColor;
+												}
+										}
+								}
+								
+								div.answer {
+										//												font-size: @biggerFont;
+								}
+						}
+						
+				}
+
+				.player1 {
+						background-color: @t-color-tandem-player1;
+						// &.question {
+						// 		background-color: @t-color-tandem-player1-light;
+						// }
+						// &.answer  {
+						// 		background-color: @t-color-tandem-player1;
+						// }
+				}
+
+				.player2 {
+						background-color: @t-color-tandem-player2;
+						// &.question {
+						// 		background-color: @t-color-tandem-player2-light;
+						// }
+						// &.answer {
+						// 		background-color: @t-color-tandem-player2;
+						// }
+				}
+
+				div.step2Instructions {
+						.card();
+						//								background-color: @nonGameCardColor;
+						text-align: center;
+						.playerLabel(2rem);
+						span.playerLabel {
+								position: absolute;
+								right: 0.5em;
+								top: 0.5em;
+						}
+
+
+				}
+
+				div.summaryPage {
+						div.summary {
+								.card();
+
+								div.pointsSummary {
+										.uk-margin-top();
+										.uk-margin-bottom();
+										//										background-color: #f0f0f0;
+										div.points {
+												font-size: 200%;
+												margin: 1em 0;
+										}
+								}
+
+								div.summaryButtons {
+										.uk-margin-top();
+										display: flex;
+										justify-content: space-evenly;
+
+										.uk-button {
+												line-height: 2em;
+												width: 40%;
+
+												span.icon {
+														width: 3em;
+												}
+										}
+								}
+
+						}
+
+						div.history {
+								.uk-margin-top();
+								.uk-margin-bottom();
+
+								div.question {
+										background-color: @nonGameCardColor;
+								}
+								
+								div.answer {
+										background-color: lighten(@nonGameCardColor, 5%);
+										margin-bottom: 1em;
+										padding-bottom: 1em;
+								}
+						}
+						
+				}
+				
+				div.navigation {
+						// position: sticky;
+						// bottom: 0;
+						background-color: white;
+						font-size: 200%;
+						line-height: 1em;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-top: 0.3em;
+
+						a {
+								color: inherit;
+						}
+
+						span.tool {
+								color: #999;
+						}
+										
+						span.left, span.right {
+								width: 30%;
+								// a {
+								// 		color: inherit;
+								// }
+						}
+
+						span.left {
+								font-size: 1rem;
+						}
+
+						span.right {
+								text-align: right;
+						}
+
+						span.center {
+								display: flex;
+								justify-content: space-between;
+								align-items: auto;
+						}
+
+						div.toolbar {
+//								display: inline;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+
+								// span.tool {
+								// 		color: #999;
+
+								// 		// + span.tool {
+								// 		// 		margin-left: 1.5em;
+								// 		// }
+								// }
+						}
+						
+				}
+
+				div.toolbar {
+						//								font-size: 200%;
+						//								margin: 1em 0;
+						
+				}
+
+				div.testdriveTools {
+						margin-top: 1em;
+				}
+
+		}
+
+		div.orderItems {
+				ul.orderItemsList {
+						list-style: none;
+						padding: 0;
+				}
+
+				ol.orderItemsList {
+						// // the numbers
+						// li.orderItem {
+						// 		position:relative;
+						
+						// 		&::before {
+						// 				position:absolute;
+						// 				top:0;
+						// 				background-color: green;
+						// 		}
+						// }
+				}
+				
+				ul.orderItemsList, ol.orderItemsList {
+						//								list-style: none;
+						//								padding: 0;
+
+						li.orderItem {
+								@pairBorder: 1px solid black;
+								@pad: 0.3em;
+
+								&:hover {
+										background-color: #eee;
+								}
+								
+								border-top: @pairBorder;
+								&:last-child {
+										border-bottom: @pairBorder;
+								}
+
+								&.draggable {
+										cursor: move;
+								}
+								
+								margin-top: 0;
+								margin-bottom: 0;
+								padding: @pad 0;
+
+								div.orderItemContent {
+
+										display: flex;
+										justify-content: flex-start;
+										align-items: flex-start;
+										
+										div.orderSymbol {
+												// width: 2em;
+												// display: inline-block;
+												flex: 0 0 2rem;
+										}
+
+										div.orderContent {
+												//										display: inline-block;
+												//										flex-basis: auto;
+										}
+								}
+						}
+				}
+		}
+
+		div.hintBox {
+				display: flex;
+				align-items: flex-end;
+				flex-direction: column;
+				margin: 2px 0 5px 0;
+				
+				span.hintBoxToggler {
+						.uk-text-muted();
+						cursor: pointer;
+						border: 1px solid #999;
+						padding: 0 2px;
+						font-size: 70%;
+						line-height: 1.5em;
+				}
+				div.uk-alert {
+						//width: 100%;
+						margin-top: 5px;
+						align-self: stretch;
+
+						h3 {
+								margin-top: 5px;
+						}
+				}
+				
+		}
+}
+
+
+
+
+div.VIAUnitComponent {
+
+		.toccamoduleBorderColor('ul.modulesList li');
+		.toccamoduleColor('h1');
+
+		padding-top: 1em;
+
+		h1.unitNavigation {
+				// margin: 0;
+				// color: white;
+				// text-align: center;
+				// padding: 0;
+				margin-bottom: 0;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				// position: sticky;
+				// top: @t-header-height;
+				// z-index: 99;
+
+				a {
+						color: inherit;
+				}
+
+				span {
+						vertical-align: middle;
+						white-space: nowrap;
+				}
+
+				span.left {
+						text-align: left;
+						display: inline-block;
+						width: 3em;						
+				}
+
+				span.right {
+						text-align: right;
+						display: inline-block;
+						width: 3em;						
+				}
+				
+				// span.arrow {
+				// 		// margin: 0 0.5em;
+				// 		display: inline-block;
+				// 		width: 2em;
+				// }
+
+				// span.backText {
+				// 		font-weight: normal;
+				// }
+		}
+
+		div.legend {
+				text-align: right;
+				font-size: 80%;
+		}
+
+}
+
+ul.modulesList {
+//		.uk-list();
+		
+		padding-left: 0;
+		list-style-type: none;
+		
+		li {
+				.catalogListItem();
+
+				// color: @t-color-blue;
+				// font-weight: bold;
+				
+				// &.inWork {
+				// 		background-color: #FEEE35;
+				// }
+
+				// &.finished {
+				// 		background-color: #57DA48;
+				// }
+
+				font-weight: bold;
+				color: @t-color-level-normal;
+				.levelColors();
+
+				// &.level-l1 {
+				// 		font-weight: bold;
+				// }
+				// &.level-l2 {
+				// 		font-weight: bold;
+				// }
+				// &.level-l3 {
+				// 		font-weight: bold;
+				// }
+
+				div.moduleEntry {
+						display: flex;
+						justify-content: flex-start;
+						align-items: flex-start;
+
+						@pad: 0.5em;
+						
+						a.gotoModule {
+								//						white-space: nowrap;
+								display: flex;
+								justify-content: flex-start;
+								align-items: flex-start;
+								flex-grow: 9;
+								padding: @pad 3px;
+
+								span.indexCode {
+										display: inline-block;
+										width: 2.5em;
+										flex-shrink: 0;
+										//						font-weight: normal;
+								}
+
+								span.level {
+										width: 2em;
+										flex-shrink: 0;
+										display: inline-block;
+										position: relative;
+										top: 2px; // Optical centering
+										img.level {
+												height: 1em;
+												vertical-align: baseline;
+										}
+								}
+
+								span.moduleTitle {
+										flex-grow: 0;
+										flex-basis: auto;
+										// display: inline-block;
+										// width: auto;
+								}
+
+
+						}
+						
+						
+						span.moduleStatus {
+								flex-grow: 1;
+								flex-shrink: 0;
+//								margin-top: 0.2em;
+								color: black;
+								text-align: right;
+								// float: right;
+								padding: @pad 0;
+
+								// Shitty little pixels offsets!
+								> * {
+										vertical-align: bottom;
+								}
+						}
+
+						span.betatesterSign {
+//								display: inline-block;
+								margin-left: 0.5em;
+								margin-right: 0.5em;
+								color: green;
+								font-size: 80%;
+								position: relative;
+								top: -0.5em;
+						}
+				}
+
+				// span.duration {
+				// 		display: inline-block;
+				// 		width: 3em;
+				// 		font-weight: bold;
+				// }
+		}
+}
+
+div.backButton {
+	//	.uk-container();
+		padding: 1em 0 1em 1em;
+
+		a.backButtonAnchor {
+				.button();
+				// background-color: @global-primary-background;
+				// color: #fff;
+				// font-weight: normal;
+				// font-size: 1em;
+
+				// &:hover {
+				// 		color: #ddd;   
+				// }
+				
+		}
+}
+
+div.zoomBox {
+		padding: 0.3em;
+		margin-top: 0.3em;
+		//		border: 1px solid black;
+		div.header {
+				position: relative;
+				padding: 0.5em 0;
+//				background-color: #999;
+				color: #999;
+				font-size: 85%;
+				text-align: center;
+				//border-bottom: 1px dotted black;
+				
+				span.title {
+						
+				}
+				span.close {
+						font-size: 2rem;
+						//				font-weight: bold;
+//						text-align: right;
+						position: absolute;
+						right: 0;
+						top: 2px;
+						a {
+								color: black;
+						}
+				}
+		}
+}
+
+div.VIAAurMyProfileComponent, div.VIAAurTeacherMyCockpit, div.VIAAurMyPortfolioComponent {
+
+		padding-top: 1em;
+
+		h1 {
+				color: @t-color-primary;
+		}
+		
+		h1, h2, h3, h4 {
+				text-align: left;
+		}
+
+		li {
+				.catalogListItem()
+		}
+		
+}
+
+div.VIAAurTeacherMyCockpit {
+
+		.invitationCode {
+				font-family: monospace;
+				font-size: 120%;
+				border: 1px solid black;
+		}
+}
+
+div.VIAAurMyPortfolioComponent {
+
+		h4.currentUnit {
+				margin-top: 0;
+		}
+		
+		div.legend {
+				text-align: right;
+				font-size: 80%;
+		}
+
+		a.deleteAction {
+//				margin-top: 0.3em;
+				margin-right: 1em;
+//				flex-shrink: 0;
+//				color: black;
+//				float: right;
+//				vertical-align: bottom;
+		}
+		
+}
+
+
+
+
+div.lightboxModal {
+		div.invitationCode {
+				font-size: 300%;
+				text-align: center;
+				font-family: monospace;
+		}
+}
+
+// Inside a uk-modal
+div.uk-modal {
+		div.teacherNotes {
+				div.teacherNotesText {
+						margin: 1em 0;
+				}
+		}
+}
+
+div.VIAInformationComponent {
+		div.message {
+				margin-bottom: 1em;
+		}
+}
+
+div.VIAStaticTextDisplayerComponent {
+		padding: 1em;
+}
+
+div.VIACaptchaComponent {
+		pre.captcha {
+				line-height: 1.1em;
+		}
+		input.captcha {
+				font-size: 200%;
+				font-family: monospace;
+				border: 2px solid green;
+				padding: 0.2em;
+				margin: 0.2em 0 0.2em 0;
+				max-width: 100%;
+				box-sizing: border-box;
+		}
+}
+
+div.VIAAurRegisterComponent {
+		label {
+				font-weight: bold;
+		}
+}
+
+// ===========================================
+// Demo
+// ===========================================
+
+@demoColor: #fffd37;
+
+span.uk-label.demoLabel {
+		background-color: @demoColor;
+		color: #000000;
+		border: 1px solid #ccc;
+		transform: rotate(-10deg);
+		font-size: 0.7rem;
+		font-weight: normal;
+		padding-left: 0.3em;
+		padding-right: 0.3em;
+		position: relative;
+		left: -0.5em;
+}
+
+div.VIADemoUnitComponent {
+		span.uk-label.demoLabel {
+				margin-left: 0.2em;
+		}
+}
+
+div.demoRibbon {
+		@dim: 20em;
+		
+		position: fixed;
+		width: @dim;
+		height: @dim;
+		bottom: -(@dim/1.8);
+		right: -(@dim/1.9);
+		padding-top: 1em;
+		transform-origin: center;
+		transform: rotate(-45deg);
+		z-index: 999999; 
+
+		div.ribbonText {
+				width: 100%;
+				text-align: center;
+				border-top: 1px solid black;
+				padding: 0.3em 1em 10em 1em;
+				background: @demoColor;
+				color: black;
+		}
+}
+
+// Cookiebar redefinitions
+// #cookie-bar-button {
+// 		background-color:  !important;
+// }
+
+// ============================================
+// Misc
+// ============================================
+
+// TODO: Oben einsortieren!
+
+figure.inlineAssetImage {
+		display: inline-block;
+		margin: 0;
+
+		figcaption {
+				line-height: 1em;
+				span.assetInfo {
+						font-size: 75%;
+						float: right;
+				}
+		}
+}
+
+span.inlineAssetAudio {
+		audio {
+				display: inline-block;
+				width: 5em;
+		}
+
+		div.mejs__container {
+				display: inline-block;
+				width: 5em;
+				vertical-align: middle;
+		}
+}
+
+.correct {
+		background-color: @correctColor;
+}
+
+.wrong {
+		// why?!
+//		background-color: transparent;
+}
+
+span.partiallyCorrectIcon {
+		color: orange;
+}
+
+span.correctIcon {
+		color: #1a1;
+}
+
+span.wrongIcon {
+		color: red;
+		padding-left: 2px;
+		padding-right: 2px;
+}
+
+div.webui-popover {
+		div.webui-popover-content {
+				word-break: break-word;
+				max-width: 20em;
+		}
+		
+		span.markAsEmpty {
+				cursor: pointer;
+				border: 2px solid green;
+
+				&.active {
+						background-color: green;
+				}
+		}
+
+		// &.webui-popover-hintBalloon {
+		// 		background-color: yellow;
+		// 		// div.webui-popover-content {
+		// 		// 		background-color: yellow;
+		// 		// }				
+		// }
+}
+
+
+div.VIAAurExerciserSolutionComponent {
+		.colors() {
+				// background-color: lightyellow;
+
+				&.answerWasWrong {
+						// background-color: @wrongColor;
+				}
+
+				&.answerWasCorrect {
+						background-color: @correctColor;
+				}
+
+		}
+
+		.solution {
+				.colors();
+		}
+
+
+		input.clozeTextPlaceholder.solution {
+				.colors();
+				
+				&.blankIsSolution {
+//						width: 2em;
+						color: transparent;
+				}
+		}
+}
+
+// // div.VIAAurExerciserFinishedComponent {
+// // 		.solution {
+
+// // 				&.answerWasWrong {
+// // 						// background-color: transparent;
+// // 				}
+
+// // 		}
+// // }
+
+
+span.copyPaste, pre.copyPaste {
+		cursor: pointer;
+}
+
+
+
+
+// // TODO Evt. innerhalb taskEditor
+// div.inputEditor {
+// 		> div.inputEditor {
+// 				border: 1px solid #333;
+// 				background-color: #f3f3f3;
+// 				padding: 5px;
+// 				margin: 10px 0;
+// 		}
+// }
+
+span.dictionaryEntry {
+		// border-bottom: 1px dotted #333;
+		text-decoration: underline;
+		text-decoration-color: #333;
+		text-decoration-style: dotted; 
+}
+
+
+// .finished {
+// 		background-color: #999;
+// }
+
+// .inWork {
+// 		background-color: #999;
+// }
+
+// div.moduleScore {
+// //		float: right;
+// //		margin-bottom: 5px;
+
+// 		table.scoreTable {
+// 				border-collapse: collapse;
+
+// 				td {
+// 						border: 1px solid black;
+
+// 						&.ignored {
+// 								background-color: #999;
+// 								color: #666;
+// 						}
+
+// 						span.taskNumber {
+// 								font-size: 14px;
+// 								margin: 0 5px;
+// 								font-weight: bold;
+// 						}
+
+// 				}
+
+// 		}
+// }
+
+
+div.moduleBody {
+		clear: both;
+		position: relative; // Wichtig, damit eingebettete versteckte absolute-Elemente die Breite korrekt berechnen können
+}
+
+.testdriveTools {
+		font-size: 80%;
+		color: #999;
+
+		a {
+				color: #666;
+		}
+}
+
+
+// =======================================================================
+// UI Breakpoints (leave at end of file, for CSS precedence)
+// =======================================================================
+
+@import "styles_aurea_responsive.less";
+
+
+// Keep this for Emacs editor!
+// NOT origami-fold-style: triple-braces
+//
+// Local Variables:
+// less-css-compile-at-save: t
+// origami-fold-style: js-mode
+// End:
