@@ -1,0 +1,96 @@
+---
+
+#
+# Main configuration file for your via installation via Ansible
+#
+
+via:
+
+  # ===== BASIC SETTINGS ==============
+
+
+  gemStone:
+    version: "3.4.5"
+
+  # Location of the source code (default github main repository)
+  baseRepository:
+    gitUrl: "https://github.com/talk-small-be-open/via-base-main.git"
+    branch: 'aurea-master'
+
+
+  # Technical name of project. Something like ViaSiteBla
+  siteName: ViaSiteAurea
+  
+  # The part of the source code which is custom to your via instance site
+  siteRepository:
+    gitUrl: "https://github.com/talk-small-be-open/via-site-aurea-main.git"
+    metacelloUrl: "github://talk-small-be-open/via-site-aurea-src/src"
+
+  # Your organization names
+#  organizationName: 'hep Verlag AG'
+#  organizationShortName: 'hep'
+
+  # Your domain of the web application
+  appDomains:
+    - aurea-staging.tmp.mindclue.ch
+  redirectedDomains: []
+#    - tocca2.mindclue11.mindclue.ch
+
+  portalDomains: []
+  
+  # Domain where your organization emails are from. Example: myorg.com
+  # emailDomain: "tocca.mindclue11.mindclue.ch"
+
+  # Email address of the via Administrator. Use your own email, I guess.
+  adminEmail: "andreas.brodbeck@mindclue.ch"
+  adminInitialPw: "test123"
+
+  # Via does not send emails directly. It will forward it to an SMTP server
+  # You probably should have an SMTP inhouse, anyway. If you need SMTP-authentication,
+  # set the configuration options in the admin backend of via.
+  # Example: smtp.myorg.com
+  smtpRelayhost: ""
+
+  # Which authentication and user provider do you use? (Choose from: local, google, facebook).
+  identityProviders: [local]
+
+  # Internal ports where the application gems will be listening behind the nginx reverse proxy
+  gemPorts: [8087, 8088]
+
+  # TURN Server (for peer to peer)
+  # turnServer:
+  #   secret: "blablawefihqkwehq34r98weufqkjefhasdf"
+  
+  integrationTest:
+    userEmail: jmeter.integration.tester@aurea.hep
+    userPassword: ij34tjkhwdfkjhq234fkjhasdfkjhq2kfjhasdkfjh
+
+  # ===== ADVANCED SETTINGS (Leave them untouched, if unsure) ==============
+
+  serverAddress: "{{inventory_hostname}}"
+
+  # Should your via instance be reachable by HTTPS? Certificates are being generated automatically with certbot (let's encrypt)
+  # Works only if the domain is public, because certbot will validate the domain online.
+  useSsl: false
+
+  # Is your via instance not ready for production? If you would like to hide your application behind an extra HTTP basic authentication, use this feature.
+  # HTTP Basic Auth Username is "betatester", choose password here:
+  isBeta: false
+  betaPassword: "heptocca"
+
+  # Installation folder of via application
+  installationPath: "/opt/via"
+
+  # Backup target (duplicity backends). See manual for duplicity for backend URLs
+  backupTarget: ""
+
+  # Set the passwort for duplicity backend in a root-visible file (env var FTP_PASSWORD)
+  # backupPassword: !vault |
+  #   $ANSIBLE_VAULT;1.1;AES256
+  #   PUT YOUR ENCRYPTED TEXT HERE
+  
+  # Use this, if you need to set the privat key of your servers user
+  # sshPrivateKey: !vault |
+  #   $ANSIBLE_VAULT;1.1;AES256
+  #   PUT YOUR ENCRYPTED TEXT HERE
+
