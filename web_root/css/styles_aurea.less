@@ -1,21 +1,17 @@
 //
 // Styles for hep Aurea Bulla
 //
-// Namespace: "t-" = short for local "this"        (in fact "Tocca-" ... ;-)
-// Caveat! The term "Module" is used in the via software as the container for tasks, but
-// is also used as a group name for two units of the Tocca-Book
+// Namespace: "a-" = short for local Aurea
 
 // =======================================================================
 // Fonts
 // =======================================================================
 
-// Font "zeitung" is included via online Adobe CSS
+// Roboto
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
 
-// @font-face {
-//   font-family: zeitung;
-//   src: url(fonts/NunitoSans-Regular.ttf);
-// 	font-weight: normal; // 400
-// }
+// Falsche Leo-Schrift (Merriweather)
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 // =======================================================================
 // Importing
@@ -34,50 +30,70 @@
 // =======================================================================
 
 
-//@t-color-primary: #d53d46;
-@t-color-primary: #950;
-@t-color-black: #333;
-@t-color-blue: #3a4d98;
-@t-color-red: @t-color-primary;
-@t-color-toccamoduleExtras: @t-color-primary;
-@t-color-tandem-player1: #00eae9;
-@t-color-tandem-player2: #ffa049;
-// @t-color-tandem-player1-light: lighten(@t-color-tandem-player1, 10%);
-// @t-color-tandem-player2-light: lighten(@t-color-tandem-player2, 10%);
+// prefix @a = "Aurea"
+@a-color-background: #EAE7E3;
+@a-color-background-light: #EAE7E380; // TODO? Transparenz?
 
-@t-color-level-normal: @t-color-blue;
-@t-color-level-intermediate: @t-color-blue;
-@t-color-level-mothertongue: #008ed2; // #d48625;
+@a-color-black: #575754;
 
+@a-color-text: #575754;
+@a-color-text-light: #878787;
+@a-color-text-line: #87878780;
 
-@t-color-toccamodule1: #e0be00;
-@t-color-toccamodule2: #5ab45a;
-@t-color-toccamodule3: #5ca9d6;
-@t-color-vocabolario: #be0050;
-@t-color-palloncini: #97c846;
+@a-color-main: #0382A6;
+@a-color-main-light: #0382A60D;
+
+@a-color-latin: @a-color-main;
+@a-color-french: #9E4F3D;
+@a-color-spanish: #D97005;
+@a-color-italian: #5C8F29;
+@a-color-english: #A882A1;
 
 
-@t-color-highlight: #ffe100;
-@t-color-text: @t-color-black;
-@t-color-background: #d8cec5;
+@a-color-blue: blue;
+@a-color-red: red;
+@a-color-aureaExtras: @a-color-main;
 
-@t-color-selection: @t-color-blue;
+// @a-color-tandem-player1: #00eae9;
+// @a-color-tandem-player2: #ffa049;
 
-@t-header-height:             4rem;
-@t-header-background:         @t-color-black;
-// @t-header-small-background:   @t-color-black;
+// @t-color-level-normal: @t-color-blue;
+// @t-color-level-intermediate: @t-color-blue;
+// @t-color-level-mothertongue: #008ed2; // #d48625;
+
+
+// @t-color-toccamodule1: #e0be00;
+// @t-color-toccamodule2: #5ab45a;
+// @t-color-toccamodule3: #5ca9d6;
+// @t-color-vocabolario: #be0050;
+// @t-color-palloncini: #97c846;
+
+
+// @t-color-highlight: #ffe100;
+// @t-color-text: @a-color-black;
+// @t-color-background: #d8cec5;
+
+@a-color-selection: @a-color-blue;
+
+
+@a-header-height:             4rem;
+@a-header-background:         @a-color-black;
+// @t-header-small-background:   @a-color-black;
 // @t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
 // @t-header-shadow-teaser:      0 0 150px 1px rgba(0,0,0,0.5);
-@t-header-padding:            0;
+@a-header-padding:            0;
+
+
+
 
 
 
 // Redefine basics for this via sub-website
-@via-basic-color: @t-color-black;
-@via-basic-background-color: @t-color-primary;
+@via-basic-color: @a-color-text;
+@via-basic-background-color: @a-color-background;
 // @via-coloredbutton-color: #555;
 // @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
-@wrongColor: @t-color-red;
+@wrongColor: @a-color-red;
 @correctColor: #cfc;
 
 
@@ -129,27 +145,22 @@ body {
 		
 		div.coreContainer {
 
-				// Generally all buttons get the color of the tocca unit, if inside a div with tocca module number
-				div {
-						.toccamoduleButton("input.submit");
-						//Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
-						.toccamoduleButton(".bigButton");
-						.toccamoduleButton("button.uk-button");
-						.toccamoduleButton("a.uk-button");
+				// Generally all buttons get the basic color of aurea
 
-						// Exception: Inverse buttons for main buttons in a exercise
-						.toccamoduleButton("div.exerciserMainButtons .uk-button", white, true);
-
+				// not "button", conflicts with mediaelement? Todo: Still true?
+				button, input.submit, .bigButton, button.uk-button, a.uk-button {
+						.aureaButton();
 				}
-				
 
-				div.core {
+				// Exception: Inverse buttons for main buttons in a exercise
+				div.exerciserMainButtons .uk-button {
+						.aureaButton(true)
 				}
 		}
 
 		div.footer {
 				padding: 40px 50px;
-				background-color: @t-color-black;
+				background-color: @a-color-black;
 				color: white;
 
 				a {
@@ -184,9 +195,9 @@ body {
 
 		&.wantColorBackground {
 				min-height: 100vh;
-				background-color: @t-color-primary;
+				background-color: @a-color-main;
 				div.coreContainer {
-						background-color: @t-color-primary;
+						background-color: @a-color-main;
 						color: black;
 
 						a {
@@ -258,23 +269,23 @@ div.pillarParagraph {
 
 		// Custom styles, used with pillar syntax ((style blablabl))
 		.dialogA {
-				color: lighten(@t-color-black, 25%);
+				color: yellow;
 		}
 
 		.dialogB {
-				color: @t-color-tandem-player1;
+				color: yellow;
 		}
 
 		.dialogC {
-				color: @t-color-tandem-player2;
+				color: yellow;
 		}
 
 		.dialogD {
-				color: #3a4d98;
+				color: yellow;
 		}
 		
 		.dialogE {
-				color: #9ba5c8; // oder eher #5674EB
+				color: yellow;
 		}
 
 		
@@ -303,34 +314,63 @@ div.pillarParagraph {
 		&.dialogE {
 				.dialogE();
 		}
+
+
+		.language-i {
+				color: @a-color-italian;
+		}
+		.language-e {
+				color: @a-color-english;
+		}
+		.language-s {
+				color: @a-color-spanish;
+		}
+		.language-f {
+				color: @a-color-french;
+		}
+		.language-l {
+				color: @a-color-latin;
+		}
+
+		&.language-i {
+				.language-i();
+		}
+		&.language-e {
+				.language-e();
+		}
+		&.language-s {
+				.language-s();
+		}
+		&.language-f {
+				.language-f();
+		}
+		&.language-l {
+				.language-l();
+		}
 		
 }
 
-.levelColors() {
-		&.level-l1 {
-				color: @t-color-level-normal;
-		}
+// .levelColors() {
+// 		&.level-l1 {
+// 				color: @t-color-level-normal;
+// 		}
+// 		&.level-l2 {
+// 				color: @t-color-level-intermediate;
+// 		}
+// 		&.level-l3 {
+// 				color: @t-color-level-mothertongue;
+// 		}
+// }
+// .level-l1 {
+// 		color: @t-color-level-normal;
+// }
+// .level-l2 {
+// 		color: @t-color-level-intermediate;
+// }
+// .level-l3 {
+// 		color: @t-color-level-mothertongue;
+// }
 
-		&.level-l2 {
-				color: @t-color-level-intermediate;
-		}
-
-		&.level-l3 {
-				color: @t-color-level-mothertongue;
-		}
-}
-
-.level-l1 {
-		color: @t-color-level-normal;
-}
-
-.level-l2 {
-		color: @t-color-level-intermediate;
-}
-
-.level-l3 {
-		color: @t-color-level-mothertongue;
-}
 
 // =======================================================================
 // UI components
@@ -341,13 +381,13 @@ div.mainContainer {
 		position: relative;
 		box-sizing: border-box;
 		
-		.toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
-		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
-		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
+		// .toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
+		// .toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
+		// .toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
 }
 
 div.VIADeviceDetectorComponent {
-		background-color: @t-color-primary;
+		background-color: @a-color-main;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -371,14 +411,14 @@ div.VIADeviceDetectorComponent {
 //
 // header 
 //
-div.t-header {
+div.aureaHeader {
     
-		background-color: @t-header-background;
+		background-color: @a-header-background;
 		color: white;
-		padding: @t-header-padding;
-		height: @t-header-height;
+		padding: @a-header-padding;
+		height: @a-header-height;
 
-		a.t-logo {
+		a.aureaLogo {
 				font-size: 1.5rem;
 				font-weight: bold;
 				color: white;
@@ -391,13 +431,13 @@ div.t-header {
 		}
 
 		nav {
-				height: @t-header-height;
+				height: @a-header-height;
 
 				// div.uk-navbar-left {
 				// 		padding-left: 0.5em;
 				// }
 				
-				&.t-menubar {
+				&.aureaMenubar {
 
 						// div.menubarCenter {
 						// 		.uk-navbar-center();
@@ -415,10 +455,10 @@ div.t-header {
 						div.menubarCenter {
 								
 								// &.activeHome {
-								// 		border-color: @t-color-primary;
+								// 		border-color: @a-color-main;
 								// 		a svg {
-								// 				stroke: @t-color-primary;
-								// 				fill: @t-color-primary;
+								// 				stroke: @a-color-main;
+								// 				fill: @a-color-main;
 								// 		}
 								// }
 								li a span.menuLabel {
@@ -431,7 +471,7 @@ div.t-header {
 						}
 						
 						ul.uk-navbar-nav {
-								height: @t-header-height;
+								height: @a-header-height;
 
 								
 								li {
@@ -441,6 +481,7 @@ div.t-header {
 												//										background-color: @t-color-toccamodule1;
 												border-bottom-width: 8px;
 												border-bottom-style: solid;
+												border-bottom-color: @a-color-main;
 												// a {
 												// 		svg {
 												// 				stroke: @t-color-toccamodule1;
@@ -453,10 +494,10 @@ div.t-header {
 
 										// The Home-Icon does not get the module color, but the primary color
 										&.activeHome {
-												border-color: @t-color-primary;
+												border-color: @a-color-main;
 												a svg {
-														stroke: @t-color-primary;
-														fill: @t-color-primary;
+														stroke: @a-color-main;
+														fill: @a-color-main;
 												}
 										}
 								}
@@ -645,7 +686,7 @@ div.VIAPublicHomeComponent {
 				margin: 2em 0;
 				font-size: 120%;
 				
-				.bigButtonStyle(@t-color-primary, white, true);
+				.bigButtonStyle(@a-color-main, white, true);
 
 		}
 
@@ -659,37 +700,96 @@ div.VIAPublicHomeComponent {
 
 }
 
-div.VIAMyHomeComponent {
+// div.VIAMyHomeComponent {
 
-		div.startArea {
-				background-color: @t-color-primary;
-				.bigButtonStyle(white, @t-color-primary);
-				
-		}
-		
-		div.infoButtons {
-				.bigButtonStyle(@t-color-blue);
-		}
-
-}
+// 		div.startArea {
+// 				background-color: @a-color-main;
+// 				.bigButtonStyle(white, @a-color-main);
+// 		}
+// 		div.infoButtons {
+// 				.bigButtonStyle(@a-color-blue);
+// 		}
+// }
 
 
 
 div.VIAAurLoginComponent {
 		height: 100%;
-//		background-color: @t-color-primary;
+//		background-color: @a-color-main;
 		
-		h1 {
-				text-align: center;
-		}
+		// h1 {
+		// 		text-align: center;
+		// }
 }
 
-div.VIAAureaStartComponent {
+div.VIAAurStartComponent {
 		padding: 2em 0;
 
 		div.VIAModuleFinderComponent {
 				margin-bottom: 2em;
 		}
+
+		div.caputs {
+				ul.caputsList {
+						li {
+								.catalogListItem();
+
+								div.caputEntry {
+										display: flex;
+										justify-content: space-between;
+										align-items: flex-start;
+
+										@pad: 0.5em;
+										
+										a.gotoCaput {
+
+												// display: flex;
+												// justify-content: flex-start;
+												// align-items: flex-start;
+												flex-grow: 9;
+												padding: @pad 3px;
+										}
+
+										span.goAhead {
+												flex-grow: 1;
+												flex-shrink: 0;
+												text-align: right;
+												padding: @pad 3px;
+										}
+								}
+						}
+				}
+		}
+
+		div.aureaExtras {
+				div.aureaExtra {
+
+						div.extraEntry {
+
+								.catalogListItem();
+
+								display: flex;
+								justify-content: space-between;
+								align-items: flex-start;
+
+								@pad: 0.5em;
+								
+								a.gotoExtra {
+										flex-grow: 9;
+										padding: @pad 3px;
+								}
+
+								span.goAhead {
+										flex-grow: 1;
+										flex-shrink: 0;
+										text-align: right;
+										padding: @pad 3px;
+								}
+								
+						}
+				}
+		}
+		
 }
 
 div.VIAModuleFinderComponent {
@@ -703,7 +803,7 @@ div.VIAModuleFinderComponent {
 		}
 
 		.focus() {
-				background-color: @t-color-selection;
+				background-color: @a-color-selection;
 				color: white;
 				outline: none;				
 		}
@@ -827,38 +927,13 @@ div.VIAModulesListComponent {
 div.VIAAurModuleExerciser {
 
 		// Header gets units background color
-//		.toccamoduleBackgroundColor("h1.moduleNavigation, div.moduleBottomNavigation");
-		.toccamoduleBackgroundColor("div.moduleNavigation");
+//		.toccamoduleBackgroundColor("div.moduleNavigation");
 		
 		div.moduleNavigation {
-				// font-size: @base-h1-font-size;
-				// //line-height: 1.2em;
-				// font-weight: 600;
+				.secondaryNavbar();
 
-				margin: 0;
-				color: white;
-				text-align: center;
-				padding: 0;
-
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				position: sticky;
-				top: @t-header-height;
-				z-index: 99;
-
-				a {
-						color: inherit;
-				}
-
-				span {
-						vertical-align: middle;
-						white-space: nowrap;
-				}
 
 				span.left {
-						font-size: @base-h1-font-size;
-//						line-height: @base-h1-line-height;
 						text-align: left;
 						display: inline-block;
 						width: 3em;
@@ -870,14 +945,12 @@ div.VIAAurModuleExerciser {
 				}
 
 				span.center {
-						font-size: @base-h1-font-size;
-						line-height: @base-h1-line-height;
+//						line-height: @base-h1-line-height;
 						font-weight: 600;
 						display: inline-block;
 				}
 				
 				span.right {
-						font-size: @base-h1-font-size;
 						text-align: right;
 						display: inline-block;
 						width: 3em;						
@@ -919,14 +992,14 @@ div.VIAAurModuleExerciser {
 
 		
 		h2.moduleTitle {
-				color: @t-color-blue;
-				text-align: center;
+//				color: @t-color-blue;
+//				text-align: center;
 				margin-top: 0.5em;
 				margin-bottom: 1em;
 				padding-left: 0.2em;
 				padding-right: 0.2em;
 
-				.levelColors();
+//				.levelColors();
 
 				span.level {
 						width: 1em;
@@ -947,16 +1020,16 @@ div.VIAAurModuleExerciser {
 		}
 
 		div.moduleBody {
-				margin: 0 0.5em;
+				margin: 0;
 				padding-bottom: 1em;
 		}
 
 		// Accordion top line
 
 		.fatLineDivider() {
-				border-top-width: 2px;
+				border-top-width: 1px;
 				border-top-style: solid;
-				border-top-color: #333;
+				border-top-color: @a-color-text-line;
 		}
 
 
@@ -969,8 +1042,6 @@ div.VIAAurModuleExerciser {
 				display: flex;
 				justify-content: space-between;
 				align-items: stretch;
-
-
 
 				@ignoredColor: #666;
 				@pad: 0.1em;
@@ -1023,11 +1094,12 @@ div.VIAAurModuleExerciser {
 
 						
 						.accTitle {
+								.titleFontFamily();
 								padding: 0.5em 0;
 								margin: 0;
 								margin-right: 0.6em;
 								display: inline;
-								color: @t-color-blue;
+//								color: @t-color-blue;
 								text-align: left;
 						}
 
@@ -1044,15 +1116,6 @@ div.VIAAurModuleExerciser {
 								}
 						}
 						
-				}
-
-				//&.facoltativo
-				&.mothertongue  {
-						div.left {
-								.accTitle {
-										color: @t-color-level-mothertongue;
-								}
-						}
 				}
 
 				div.right {
@@ -1213,7 +1276,7 @@ div.exercise {
 		}
 
 		input[type=text].clozeTextPlaceholder {
-				.clozeTextPlaceholder;
+				.clozeTextPlaceholder();
 
 				&:focus {
 						outline: 1px solid #ccc;
@@ -1305,7 +1368,7 @@ div.exercise {
 
 		div.selectOneInput, div.selectMany {
 
-				.bigButtonStyle(@t-color-blue);
+				.bigButtonStyle(@a-color-blue);
 
 				label.bigButton {
 						//								text-align: left;
@@ -1808,7 +1871,7 @@ div.exercise {
 
 		div.highlightAreas {
 
-				@highlightColor: lighten(@t-color-selection, 20%);
+				@highlightColor: lighten(@a-color-selection, 20%);
 				background-color: white;
 				
 				.noUserSelect();
@@ -1848,7 +1911,7 @@ div.exercise {
 						}
 						&.selected {
 								color: white;
-								background-color: @t-color-selection !important;
+								background-color: @a-color-selection !important;
 						}
 
 						// // Should be stronger than "highlighted" above
@@ -1922,576 +1985,6 @@ div.exercise {
 		}
 		
 		
-
-		// See also via base styles
-		div.VIAUserPairingComponent {
-
-				div.pairingStatus {
-						span.pairingMessage {
-								color: green;
-						}
-						div.pairingExpired {
-								color: red;
-						}
-						
-				}
-				
-				// .pairingCode() {
-				// 		border: 2px solid black;
-				// 		padding: 0.3em;
-				// 		font-size: 180%;
-				// }
-
-				// div.pairingStatus {
-				// 		margin: 1em 0;
-
-				// 		div.pairingMessage {
-				// 				margin: 1em 0;
-				// 				color: green;
-				// 		}
-				// }
-				
-				&.VIAUserPairingPassiveComponent {
-						div.yourId {
-								span.theId {
-										display: inline-block;
-										background-color: #eee;
-										letter-spacing: 0.2em;
-										//												padding-right: -0.5em;
-								}
-						}
-				}
-
-				// &.VIAUserPairingActiveComponent {
-				// 		div.explanation {
-				// 				margin: 0.5em 0;
-				// 		}
-
-				// 		div.codeInputContainer {
-				// 				input.codeInput {
-				// 						.pairingCode();
-				// 						font-family: monospace;
-				// 						width: 3em;
-				// 						margin-right: 1em;
-				// 				}
-
-				// 				.uk-button {
-				// 						font-size: 150%;
-				// 				}
-				// 		}
-				// }
-		}
-		
-		
-		// Tandem sequence
-		div.VIATandemSequenceExerciser {
-
-				@radius: 0.5em;
-				@nonGameCardColor: #ddd;
-
-				.playerLabel(@circleSize) {
-						// 								span.playerCharContainer {
-						// 										margin: 0 1em;
-						// 										display: flex;
-						// 										justify-content: center;
-						// 										align-items: center;
-
-						// 	//									display: inline-block;
-						// 										font-size: @circleSize;
-						// 										// font-size: 0.7 * @circleSize;
-						// 										padding: 0.3 * @circleSize;
-						// 										background-color: white;
-						// 										width: @circleSize;
-						// 										height: @circleSize;
-						// //										text-align: center;
-						// 										border-radius: 50%;
-						// //										vertical-align: middle;
-						// //										line-height: @circleSize;
-
-						// Defined outside, could be standalone
-						span.playerChar {
-								display: inline-block;
-								//font-size: @circleSize;
-								font-size: 0.7 * @circleSize;
-								//padding: 0.3 * @circleSize;
-								background-color: white;
-								width: @circleSize;
-								height: @circleSize;
-								text-align: center;
-								border-radius: 50%;
-								vertical-align: middle;
-								line-height: @circleSize;
-								padding-left: 0.05em;
-								margin-right: -0.05em;
-								padding-bottom: 0.05em;
-								margin-top: -0.05em;
-
-						}
-
-						span.playerLabel {
-
-								span.playerLabelContent {
-										position: relative;
-
-										span.playerIsMe {
-												display: inline-block;
-												background-color: #fffd37;
-												color: #000000;
-												border: 1px solid #ccc;
-												border-radius: 0.5em;
-												//transform: rotate(-20deg);
-												font-size: 0.7rem;
-												font-weight: normal;
-												padding-left: 0.3em;
-												padding-right: 0.3em;
-												position: absolute;
-												left: -40%;
-												top: -20%;
-										}
-								}
-						}
-				}
-				
-				.ajaxAction {
-						display: contents;
-						cursor: pointer;
-				}
-				
-				.card {
-						display: block;
-						position: relative;
-						border-radius: @radius;
-						padding: 1em;
-
-						.uk-button {
-								border-color: black;
-								color: inherit;
-								background-color: transparent;
-								font-weight: bold;
-						}
-				}
-				
-				// .randomCode {
-				// 		font-size: 200%;
-				// 		margin: 0.5em 0;
-				// }
-
-				// div.randomCodes {
-				// 		margin: 0.5em 0;
-
-				// 		.randomCode {
-				// 				text-align: center;
-				// 		}
-				// }
-
-				div.p2pStatus, div.talkmasterStatus {
-						//								display: none;
-						margin: 1.5em 0;
-						// float: right;
-						// &.error {
-						// 		display: inline-block;
-						// }
-				}
-
-				
-				a.chooser {
-						.card();
-						text-align: center;
-						padding: 0.2em;
-						padding-bottom: 3em;
-						
-						.playerLabel(3rem);
-						span.playerChar {
-								margin: 0.2em 0;
-						}
-
-						span.buttonish {
-								//										margin: 0.5em 0;
-								//display: inline-block;
-								position: absolute;
-								width: 80%;
-								bottom: 0.4em;
-								left: 10%;
-								box-sizing: border-box;
-								line-height: 2em;
-								//										border: 1px solid #333;
-								text-transform: uppercase;
-						}
-
-						.icon {
-								font-size: 1.5em;
-						}
-
-						// .button {
-						// 		line-height: 2em;
-						// }
-						
-				}
-
-				div.pairer {
-						.card();
-						//background-color: @nonGameCardColor;
-				}
-
-				
-				div.questionAndAnswer {
-						//						padding: 1em;
-						@biggerFont: 150%;
-						@otherPlayerFontColor: #666;
-						@padding: 1rem;
-						@iconSize: 4rem;
-
-						// div.body {
-						// 		padding-top: 0.5em;
-						// }
-
-						.playerLabel(2rem);
-
-						div.question {
-								.card();
-								//								margin-bottom: 2em;
-								position: relative;
-								z-index: 10;
-
-								span.playerLabel {
-										float: right;
-										margin-bottom: 0.5em;
-										margin-left: 0.3em;
-										//position: absolute;
-										// right: 0.5em;
-										// top: 0.5em;
-								}
-
-
-								div.explanation {
-										margin-top: 1em;
-										margin-bottom: 1em;
-
-										div.audioPlayer {
-												display: inline-block;
-												width: 80%;
-										}
-								}
-
-								div.body {
-										margin-top: 1em;
-										margin-bottom: 1em;
-								}
-
-								div.questionIcon {
-										text-align: center;
-										.icon {
-												font-size: @iconSize;
-												margin-right: 0.1em;
-										}
-								}
-						}
-
-						
-						div.answer {
-								.card();
-								position: relative;
-								z-index: 5;
-								top: -1.5 * @radius;
-								margin-bottom: -1.5 * @radius;
-								padding-left: @padding;
-								padding-right: @padding;
-								padding-bottom: @padding * 0.1;
-								padding-top: 2.5 * @radius;
-								margin-top: 0;
-								//font-size: @biggerFont;
-
-								span.playerLabel {
-										// float: right;
-										// margin-bottom: 0.5em;
-										// margin-left: 0.3em;
-										position: absolute;
-										right: 0.5em;
-										top: 1.2em;
-								}
-								
-
-								div.answerIcon {
-										//font-weight: bold;
-										text-align: center;
-										cursor: pointer;
-										z-index: 20;
-										.icon {
-												font-size: @iconSize;
-
-												&.answer {
-														// svg {
-														// 		stroke-width: 1px;
-														// 		stroke: black;
-														// }
-														// font-size: @iconSize * 0.6;
-														// position: relative;
-														// top: -0.5em;
-												}
-												&.dropdown {
-														font-size: @iconSize * 0.6;
-														position: relative;
-														top: -0.1em;
-														svg {
-																stroke-width: 2px;
-																stroke: black;
-														}
-												}
-										}
-								}
-
-								div.body {
-
-										position: relative;
-										
-										&.partlyHidden {
-												div.answerContent {
-														display: none;
-												}
-												div.interaction {
-														margin: 0;
-														height: 1em;
-														overflow: hidden;
-														opacity: 0.3;
-														filter: saturate(50%);
-														pointer-events: none;
-														position: absolute;
-														bottom: 0;
-														//																margin-top: -2em;
-														z-index: 10;
-														width: 100%;
-
-														div.goAheadButton {
-																display: none;
-														}
-
-												}
-
-										}
-
-										// div.answerContent {
-										// 		div.answerContent {
-										// 				display: none;
-										// 		}														
-										// }
-										
-										div.interaction {
-												margin: 1em 0;
-												text-align: center;
-
-
-												div.correctionButtons {
-														margin: 0;
-														display: flex;
-														justify-content: space-evenly;
-
-														// Buttons
-														a, .spinner, svg.icon {
-																font-size: 300%;
-														}
-
-														div.spinner {
-																display: none;
-														}
-												}
-
-												div.goAheadButton {
-														svg.icon {
-																font-size: 300%;
-														}
-												}
-										}
-								}
-
-						}
-
-						&.hiddenAnswer {
-								div.question {
-										//										font-size: @biggerFont;
-								}
-								// div.answer {
-								// 		height: 2em;
-								// 		padding: 0;
-								// }
-						}
-
-						&.current {
-								&.hiddenAnswer {
-										div.question {
-												//														font-size: @biggerFont;
-										}
-								}
-
-								&.withAnswer {
-										div.question {
-												div.explanation {
-														color: @otherPlayerFontColor;
-												}
-
-												div.body {
-														color: @otherPlayerFontColor;
-												}
-										}
-								}
-								
-								div.answer {
-										//												font-size: @biggerFont;
-								}
-						}
-						
-				}
-
-				.player1 {
-						background-color: @t-color-tandem-player1;
-						// &.question {
-						// 		background-color: @t-color-tandem-player1-light;
-						// }
-						// &.answer  {
-						// 		background-color: @t-color-tandem-player1;
-						// }
-				}
-
-				.player2 {
-						background-color: @t-color-tandem-player2;
-						// &.question {
-						// 		background-color: @t-color-tandem-player2-light;
-						// }
-						// &.answer {
-						// 		background-color: @t-color-tandem-player2;
-						// }
-				}
-
-				div.step2Instructions {
-						.card();
-						//								background-color: @nonGameCardColor;
-						text-align: center;
-						.playerLabel(2rem);
-						span.playerLabel {
-								position: absolute;
-								right: 0.5em;
-								top: 0.5em;
-						}
-
-
-				}
-
-				div.summaryPage {
-						div.summary {
-								.card();
-
-								div.pointsSummary {
-										.uk-margin-top();
-										.uk-margin-bottom();
-										//										background-color: #f0f0f0;
-										div.points {
-												font-size: 200%;
-												margin: 1em 0;
-										}
-								}
-
-								div.summaryButtons {
-										.uk-margin-top();
-										display: flex;
-										justify-content: space-evenly;
-
-										.uk-button {
-												line-height: 2em;
-												width: 40%;
-
-												span.icon {
-														width: 3em;
-												}
-										}
-								}
-
-						}
-
-						div.history {
-								.uk-margin-top();
-								.uk-margin-bottom();
-
-								div.question {
-										background-color: @nonGameCardColor;
-								}
-								
-								div.answer {
-										background-color: lighten(@nonGameCardColor, 5%);
-										margin-bottom: 1em;
-										padding-bottom: 1em;
-								}
-						}
-						
-				}
-				
-				div.navigation {
-						// position: sticky;
-						// bottom: 0;
-						background-color: white;
-						font-size: 200%;
-						line-height: 1em;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						margin-top: 0.3em;
-
-						a {
-								color: inherit;
-						}
-
-						span.tool {
-								color: #999;
-						}
-										
-						span.left, span.right {
-								width: 30%;
-								// a {
-								// 		color: inherit;
-								// }
-						}
-
-						span.left {
-								font-size: 1rem;
-						}
-
-						span.right {
-								text-align: right;
-						}
-
-						span.center {
-								display: flex;
-								justify-content: space-between;
-								align-items: auto;
-						}
-
-						div.toolbar {
-//								display: inline;
-								display: flex;
-								justify-content: space-between;
-								align-items: center;
-
-								// span.tool {
-								// 		color: #999;
-
-								// 		// + span.tool {
-								// 		// 		margin-left: 1.5em;
-								// 		// }
-								// }
-						}
-						
-				}
-
-				div.toolbar {
-						//								font-size: 200%;
-						//								margin: 1em 0;
-						
-				}
-
-				div.testdriveTools {
-						margin-top: 1em;
-				}
-
-		}
-
 		div.orderItems {
 				ul.orderItemsList {
 						list-style: none;
@@ -2582,40 +2075,119 @@ div.exercise {
 				}
 				
 		}
-}
+
+		div.dualImageSwitcher {
+				div.imagesContainer {
+						display: inline-block;
+						div.image {
+								display: inline-block;
+								text-align: right;
+								img {
+										display: block;
+								}
+								span.assetInfo {
+								}
+								&.hidden {
+										display: none;
+								}
+								// &.image2 {
+								// 		img {
+								// 				border: 2px solid yellow;
+								// 		}
+								// }
+						}
+				}
+
+				div.tools {
+						.uk-margin-top();
+						.printThis {
+								float: right;
+						}
+				}
+		}
+
+
+		
+		div.textListInput {
+
+				span.lineNumber {
+						color: @a-color-text-light;
+				}
+
+				div.hintFragments {
+						padding: 1em;
+						background-color: @a-color-background-light;
+						border: 1px solid black;
+						
+						span.hintFragment {
+								margin: 0.5em;
+								cursor: pointer;
+
+								&:hover {
+										background-color: white;
+								}
+						}
+				}
+				
+				div.textInputs {
+						margin: 2em 0;
+						
+						input[type=text].textListInput {
+								.clozeTextPlaceholder();
+								width: 80%;
+								caret-color: red;
+
+								&.correct {
+										background-color: @correctColor;
+								}
+								&.wrong {
+										background-color: @wrongColor;
+								}
+
+								
+								&:focus {
+										outline: 1px solid #ccc;
+										background-color: #ffd;
+								}
+
+						}
+
+						span.clearLine {
+								cursor: pointer;
+						}
+				}
+
+		}
+
+		div.textMemo {
+				background-color: #eee;
+				padding: 1em;
+				textarea.textMemo {
+						width: 100%;
+						margin-top: 1em;
+						padding: 1em;
+						border: 1px solid #666;
+						background-color: #fefefe;
+						box-sizing: border-box;
+				}
+		}
+		
+} // div.exercise
 
 
 
 
 div.VIAUnitComponent {
 
-		.toccamoduleBorderColor('ul.modulesList li');
-		.toccamoduleColor('h1');
+		// .toccamoduleBorderColor('ul.modulesList li');
+		// .toccamoduleColor('h1');
 
-		padding-top: 1em;
+//		padding-top: 1em;
 
-		h1.unitNavigation {
-				// margin: 0;
-				// color: white;
-				// text-align: center;
-				// padding: 0;
-				margin-bottom: 0;
+		div.unitNavigation {
+				.secondaryNavbar();
 
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				// position: sticky;
-				// top: @t-header-height;
-				// z-index: 99;
-
-				a {
-						color: inherit;
-				}
-
-				span {
-						vertical-align: middle;
-						white-space: nowrap;
-				}
+				
 
 				span.left {
 						text-align: left;
@@ -2648,7 +2220,6 @@ div.VIAUnitComponent {
 }
 
 ul.modulesList {
-//		.uk-list();
 		
 		padding-left: 0;
 		list-style-type: none;
@@ -2656,30 +2227,11 @@ ul.modulesList {
 		li {
 				.catalogListItem();
 
-				// color: @t-color-blue;
-				// font-weight: bold;
-				
-				// &.inWork {
-				// 		background-color: #FEEE35;
-				// }
+//				font-weight: bold;
 
-				// &.finished {
-				// 		background-color: #57DA48;
-				// }
+				// color: @t-color-level-normal;
+				// .levelColors();
 
-				font-weight: bold;
-				color: @t-color-level-normal;
-				.levelColors();
-
-				// &.level-l1 {
-				// 		font-weight: bold;
-				// }
-				// &.level-l2 {
-				// 		font-weight: bold;
-				// }
-				// &.level-l3 {
-				// 		font-weight: bold;
-				// }
 
 				div.moduleEntry {
 						display: flex;
@@ -2697,6 +2249,7 @@ ul.modulesList {
 								padding: @pad 3px;
 
 								span.indexCode {
+										.titleFontFamily();
 										display: inline-block;
 										width: 2.5em;
 										flex-shrink: 0;
@@ -2716,6 +2269,7 @@ ul.modulesList {
 								}
 
 								span.moduleTitle {
+										.titleFontFamily();
 										flex-grow: 0;
 										flex-basis: auto;
 										// display: inline-block;
@@ -2725,22 +2279,30 @@ ul.modulesList {
 
 						}
 						
-						
-						span.moduleStatus {
+
+						span.rightStuff {
 								flex-grow: 1;
 								flex-shrink: 0;
-//								margin-top: 0.2em;
-								color: black;
 								text-align: right;
-								// float: right;
 								padding: @pad 0;
 
 								// Shitty little pixels offsets!
 								> * {
 										vertical-align: bottom;
 								}
+								
+						
+								span.moduleStatus {
+									//	color: black;
+										margin-right: 1em;
+								}
+
+								span.goAhead {
+								//		color: black;
+								}
 						}
 
+						
 						span.betatesterSign {
 //								display: inline-block;
 								margin-left: 0.5em;
@@ -2813,7 +2375,7 @@ div.VIAAurMyProfileComponent, div.VIAAurTeacherMyCockpit, div.VIAAurMyPortfolioC
 		padding-top: 1em;
 
 		h1 {
-				color: @t-color-primary;
+				color: @a-color-main;
 		}
 		
 		h1, h2, h3, h4 {
@@ -3163,9 +2725,7 @@ div.moduleBody {
 
 
 // Keep this for Emacs editor!
-// NOT origami-fold-style: triple-braces
 //
 // Local Variables:
 // less-css-compile-at-save: t
-// origami-fold-style: js-mode
 // End:

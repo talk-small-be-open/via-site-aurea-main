@@ -31,7 +31,7 @@
 
 
 @base-body-background:                          #fff;
-@base-body-font-family:                         zeitung, sans-serif;
+@base-body-font-family:                         @global-font-family;
 @base-body-font-weight:                         400;
 @base-body-font-size:                           16px;
 @base-body-line-height:                         20px;
@@ -54,9 +54,9 @@
 
 @base-margin-vertical:                          15px;
 
-@base-heading-font-family:                      zeitung, sans-serif;
+@base-heading-font-family:                      Merriweather, serif; // @global-font-family;
 @base-heading-font-weight:                      normal;
-@base-heading-color:                            #444;
+@base-heading-color:                            @a-color-main;
 @base-heading-text-transform:                   none;
 @base-heading-margin-top:                       25px;
 @base-h1-font-size:                             2.5rem;
@@ -124,7 +124,7 @@
 // ========================================================================
 
 .hook-base-heading() {
-		text-align: center;
+//		text-align: center;
 }
 
 .hook-base-h1() {

@@ -168,6 +168,7 @@ function processHtmlDocument(contextElement) {
 
 	if ( ! (typeof JoelPurra === 'undefined') ) {
 		$('input.clozeTextPlaceholder', contextElement).plusAsTab();
+		$('input.textListInput', contextElement).plusAsTab();
 	}
 }
 
@@ -181,6 +182,35 @@ function scrollToExerciseTask(taskTitleElement) {
 
 	window.scroll({behavior: 'smooth', top: (elementPosition - targetPosition) });
 
+}
+
+// function addTextToCursor(text) {
+
+//   const element = document.activeElement;
+//   const caretPos = element.selectionStart;
+//   const textAreaTxt = element.value;
+	
+//   element.value = textAreaTxt.substring(0, caretPos) + text + textAreaTxt.substring(caretPos);
+// 	element.selectionStart = caretPos + txtToAdd.length
+// }
+
+
+// Helper for VIATextListInputTask
+function addTextToListInput(id, text) {
+
+	const textToAdd = ' ' + text + ' ';
+	const main = document.getElementById(id);
+	const element = $(main).data('lastInputElement') || $(main).find("div.textInputs input.textListInput")[0];
+	const position = $(main).data('lastPosition') || 0;
+  const originalText = element.value;
+	
+  element.value = originalText.substring(0, position) + textToAdd + originalText.substring(position);
+	element.selectionStart = position + textToAdd.length;
+	element.selectionEnd = element.selectionStart;
+	$(main).data('lastPosition', element.selectionStart);
+
+	element.focus();
+	
 }
 
 

@@ -14,7 +14,7 @@
 // Only small phones =====================================================================================
 @media (max-width: @breakpoint-small-max) {
 
-		@t-header-height-small: @t-header-height * 0.8;
+		@a-header-height-small: @a-header-height * 0.8;
 		
 		div.coreContainer {
 				padding-left: 0;
@@ -28,23 +28,23 @@
 		// 		font-size: 90%;
 		// }
 
-		div.t-header {
+		div.aureaHeader {
 
-				padding-top: @t-header-padding / 2;
-				padding-bottom: @t-header-padding / 2;
-				height: @t-header-height-small;
+				padding-top: @a-header-padding / 2;
+				padding-bottom: @a-header-padding / 2;
+				height: @a-header-height-small;
 
-				a.t-logo {
+				a.aureaLogo {
 						font-size: 1rem;
 				}
 
 				nav {
-						height: @t-header-height-small;
+						height: @a-header-height-small;
 
-						&.t-menubar {
+						&.aureaMenubar {
 
 								ul.uk-navbar-nav {
-										height: @t-header-height-small;
+										height: @a-header-height-small;
 
 										li {
 												padding-top: 0.6em;
@@ -73,7 +73,7 @@
 
 		div.VIATocModuleExerciser {
 				div.moduleNavigation {
-						top: @t-header-height-small;
+						top: @a-header-height-small;
 				}
 		}
 
@@ -109,6 +109,7 @@
 @media (min-width: @breakpoint-large) {
 
 		@backgroundcolor: #EFEBE8;
+		@sidePadding: 10vw;
 		
 		html {
 				min-height: 100vh;
@@ -118,10 +119,15 @@
 		body {
 				background-color: @backgroundcolor;
 
+
+				div.aureaHeader {
+						padding-left: @sidePadding;
+				}
+				
 				div.coreContainer {
 						background-color: @backgroundcolor;
-						padding-left: 10%;
-						padding-right: 10%;
+						padding-left: @sidePadding;
+						padding-right: @sidePadding;
 
 						// padding-bottom: 4em; // Because of fixed footer
 
@@ -133,11 +139,11 @@
 
 				
 				&.wantColorBackground {
-						background-color: @t-color-primary;
+						background-color: @a-color-main;
 						div.coreContainer {
-								background-color: @t-color-primary;
+								background-color: @a-color-main;
 								div.core {
-										background-color: @t-color-primary;
+										background-color: @a-color-main;
 								}
 						}
 				}
@@ -146,7 +152,7 @@
 		}
 		
 
-		div.t-header {
+		div.aureaHeader {
 				padding-left: 10%;
 				padding-right: 10%;
 
