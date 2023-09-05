@@ -13,6 +13,10 @@
 // Falsche Leo-Schrift (Merriweather)
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
+// Capitalis Monumentalis
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+
+
 // =======================================================================
 // Importing
 // =======================================================================
@@ -256,98 +260,94 @@ input.submit, button.uk-button, a.uk-button {
 // 		.toccamoduleButton("a.uk-button");
 // }
 
-div.pillarParagraph {
-		+ div.pillarParagraph {
-				margin-top: 1em;
+span.pillarDocument {
+
+		.languageColors() {
+				&.language-i {
+						color: @a-color-italian;
+				}
+				&.language-e {
+						color: @a-color-english;
+				}
+				&.language-s {
+						color: @a-color-spanish;
+				}
+				&.language-f {
+						color: @a-color-french;
+				}
+				&.language-l {
+						color: @a-color-latin;
+				}
 		}
 
-		&.border {
-				padding: 0.5em;
-				margin: 0.5em;
-				border: 1px solid black;
-		}
-
-		// Custom styles, used with pillar syntax ((style blablabl))
-		.dialogA {
-				color: yellow;
-		}
-
-		.dialogB {
-				color: yellow;
-		}
-
-		.dialogC {
-				color: yellow;
-		}
-
-		.dialogD {
-				color: yellow;
-		}
-		
-		.dialogE {
-				color: yellow;
-		}
-
-		
-		.noWrap {
-				white-space: nowrap;
-		}
-
-		
-		// Custom paragraph styles, used with pillar syntax @@style blablabl
-		&.dialogA {
-				.dialogA();
-		}
-
-		&.dialogB {
-				.dialogB();
-		}
-
-		&.dialogC {
-				.dialogC();
-		}
-
-		&.dialogD {
-				.dialogD();
-		}
-
-		&.dialogE {
-				.dialogE();
+		span.language {
+				.languageColors();
 		}
 
 
-		.language-i {
-				color: @a-color-italian;
-		}
-		.language-e {
-				color: @a-color-english;
-		}
-		.language-s {
-				color: @a-color-spanish;
-		}
-		.language-f {
-				color: @a-color-french;
-		}
-		.language-l {
-				color: @a-color-latin;
-		}
+		div.pillarParagraph {
+				.languageColors();
 
-		&.language-i {
-				.language-i();
+				+ div.pillarParagraph {
+						margin-top: 1em;
+				}
+
+				&.border {
+						padding: 0.5em;
+						margin: 0.5em;
+						border: 1px solid black;
+				}
+
+				// Custom styles, used with pillar syntax ((style blablabl))
+				.dialogA {
+						color: yellow;
+				}
+
+				.dialogB {
+						color: yellow;
+				}
+
+				.dialogC {
+						color: yellow;
+				}
+
+				.dialogD {
+						color: yellow;
+				}
+				
+				.dialogE {
+						color: yellow;
+				}
+
+				
+				.noWrap {
+						white-space: nowrap;
+				}
+
+				
+				// Custom paragraph styles, used with pillar syntax @@style blablabl
+				&.dialogA {
+						.dialogA();
+				}
+
+				&.dialogB {
+						.dialogB();
+				}
+
+				&.dialogC {
+						.dialogC();
+				}
+
+				&.dialogD {
+						.dialogD();
+				}
+
+				&.dialogE {
+						.dialogE();
+				}
+
+				
 		}
-		&.language-e {
-				.language-e();
-		}
-		&.language-s {
-				.language-s();
-		}
-		&.language-f {
-				.language-f();
-		}
-		&.language-l {
-				.language-l();
-		}
-		
 }
 
 // .levelColors() {
@@ -423,7 +423,7 @@ div.aureaHeader {
 				font-weight: bold;
 				color: white;
 
-				svg.toccaLogo {
+				svg.aureaLogo {
 						//stroke: currentcolor;
 						fill: currentcolor;
 						width: 2em;
@@ -657,7 +657,7 @@ div.VIAPublicHomeComponent {
 
 		padding-bottom: 1em;
 		
-		div.toccaBanner {
+		div.aureaBanner {
 				// background-color: @t-color-red;
 				// background-image: url(/site/images/public_banner.jpg);
 				// background-repeat: no-repeat;
@@ -1216,6 +1216,10 @@ div.exercise {
 				margin-left: 10%;
 				margin-right: 10%;
 		}
+		.capitalis {
+				font-family: 'Goudy Bookletter 1911', serif;
+				text-transform: uppercase;
+		}
 
 		
 		div.topToolbar {
@@ -1631,6 +1635,8 @@ div.exercise {
 
 		div.imageDisplayer {
 				span.image {
+						margin-top: 0.5em;
+						margin-bottom: 0.5em;
 						display: inline-block;
 						text-align: right;
 						img {
@@ -1680,69 +1686,71 @@ div.exercise {
 
 
 		// Obsolete? Wir haben nur click-click und kein drag-drop bei tocca
-		div.mapPairs {
-				@pairBorder: 1px solid black;
+		// div.mapPairs {
+		// 		@pairBorder: 1px solid black;
 				
-				border-top: @pairBorder;
-				display: table;
-				border-collapse: collapse;
+		// 		border-top: @pairBorder;
+		// 		display: table;
+		// 		border-collapse: collapse;
 				
-				div.objectPair {
-						display: table-row;
-						border-bottom: @pairBorder;
+		// 		div.objectPair {
+		// 				display: table-row;
+		// 				border-bottom: @pairBorder;
 
-						.dropHover();
+		// 				.dropHover();
 
-						span.hintSymbol {
-								float:left;
-								margin-left: -20px;
-								margin-top: 10px;
-						}
+		// 				span.hintSymbol {
+		// 						float:left;
+		// 						// margin-left: -20px;
+		// 						// margin-top: 10px;
+		// 						margin-top: 0;
+		// 						margin-bottom: 0;
+		// 				}
 						
-						div.leftObject {
-								display: table-cell;
-								padding-left: 10px;
-						}
+		// 				div.leftObject {
+		// 						display: table-cell;
+		// 						padding-left: 10px;
+		// 				}
 
-						div.middleColumn {
-								display: table-cell;
-						}
+		// 				div.middleColumn {
+		// 						display: table-cell;
+		// 				}
 
-						div.rightObject {
-								@dragHandleOffset: 25px;
+		// 				div.rightObject {
+		// 						@dragHandleOffset: 25px;
 
-								display: table-cell;
-								padding: 5px 10px 5px (@dragHandleOffset + 10px);
+		// 						display: table-cell;
+		// 						padding: 5px 10px 5px (@dragHandleOffset + 10px);
 
-								div.objectPairDraggable {
-										background-color: #eee;
-										padding: 10px;
-										border: 1px solid #ddd;
-										margin-bottom: 10px;
+		// 						div.objectPairDraggable {
+		// 								background-color: #eee;
+		// 								padding: 10px;
+		// 								border: 1px solid #ddd;
+		// 								margin-bottom: 10px;
 
-										.draggable();
+		// 								.draggable();
 
-										&:hover {
-												border: 1px solid #333;
-										}
+		// 								&:hover {
+		// 										border: 1px solid #333;
+		// 								}
 
-										&:only-child {
-												margin-bottom: 0;
-										}
+		// 								&:only-child {
+		// 										margin-bottom: 0;
+		// 								}
 
-										&:not(:first-child) {
-												background-color: #f99;
-										}
+		// 								&:not(:first-child) {
+		// 										background-color: #f99;
+		// 								}
 
-										span.dragHandle {
-												position: absolute;
-												margin-left: -@dragHandleOffset;
-										}
+		// 								span.dragHandle {
+		// 										position: absolute;
+		// 										margin-left: -@dragHandleOffset;
+		// 								}
 
-								}
-						}
-				}
-		}
+		// 						}
+		// 				}
+		// 		}
+		// }
 
 
 		div.mapPairsClickClick {
@@ -1783,12 +1791,16 @@ div.exercise {
 						
 						span.hintSymbol {
 								float:left;
-								margin-left: -20px;
-								margin-top: 10px;
+								// margin-left: -20px;
+								// margin-top: 10px;
+								margin-top: 0;
+								margin-bottom: 0;
 						}
 						
 						div.leftObject {
 								display: table-cell;
+								min-width: 20%;
+								background-clip: padding-box;
 								border: @pairBorder;
 								padding: 3px 22px 5px 10px;
 								cursor: pointer;
@@ -1806,6 +1818,7 @@ div.exercise {
 
 						div.rightObject {
 								display: table-cell;
+								background-clip: padding-box;
 								border: @pairBorder;
 								padding: 3px 10px 5px 10px;
 								cursor: pointer;
@@ -2126,6 +2139,10 @@ div.exercise {
 								&:hover {
 										background-color: white;
 								}
+						}
+
+						div.hintTools {
+								margin-top: 1em;
 						}
 				}
 				
@@ -2620,13 +2637,18 @@ div.VIAAurExerciserSolutionComponent {
 				.colors();
 		}
 
-
-		input.clozeTextPlaceholder.solution {
-				.colors();
-				
-				&.blankIsSolution {
-//						width: 2em;
-						color: transparent;
+		div.clozeText {
+				span.selectOneInput.solution {
+						border: 1px dotted black;
+				}
+ 
+				input.clozeTextPlaceholder.solution {
+						.colors();
+						
+						&.blankIsSolution {
+								//						width: 2em;
+								color: transparent;
+						}
 				}
 		}
 }

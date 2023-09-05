@@ -196,19 +196,44 @@ function scrollToExerciseTask(taskTitleElement) {
 
 
 // Helper for VIATextListInputTask
-function addTextToListInput(id, text) {
+function listInput_addText(id, text) {
 
-	const textToAdd = ' ' + text + ' ';
+	var textToAdd = text;
 	const main = document.getElementById(id);
 	const element = $(main).data('lastInputElement') || $(main).find("div.textInputs input.textListInput")[0];
 	const position = $(main).data('lastPosition') || 0;
   const originalText = element.value;
+
+	// Auto add space?
+	// if ( (position > 0) && (originalText.at(position-1) != " ") ) {
+	// 	textToAdd = ' ' + textToAdd;
+	// }
 	
   element.value = originalText.substring(0, position) + textToAdd + originalText.substring(position);
 	element.selectionStart = position + textToAdd.length;
 	element.selectionEnd = element.selectionStart;
 	$(main).data('lastPosition', element.selectionStart);
 
+	element.focus();
+	
+}
+
+function listInput_addSpace(id) {
+	listInput_addText(id, " ");
+}
+
+
+// Helper for VIATextListInputTask
+function listInput_gotoNextLine(id) {
+
+	const main = document.getElementById(id);
+	const emptyInputs = $(main).find("div.textInputs input.textListInput").filter(function() {
+    return !this.value;
+	});
+
+	const element = emptyInputs[0];
+
+	$(main).data('lastInputElement', element);
 	element.focus();
 	
 }
