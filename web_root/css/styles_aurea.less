@@ -54,7 +54,7 @@
 @a-color-english: #A882A1;
 
 
-@a-color-blue: blue;
+@a-color-blue: @a-color-main;
 @a-color-red: red;
 @a-color-aureaExtras: @a-color-main;
 
@@ -152,7 +152,8 @@ body {
 				// Generally all buttons get the basic color of aurea
 
 				// not "button", conflicts with mediaelement? Todo: Still true?
-				button, input.submit, .bigButton, button.uk-button, a.uk-button {
+				// button, input.submit {
+				.bigButton, button.uk-button, a.uk-button {
 						.aureaButton();
 				}
 
@@ -1220,6 +1221,10 @@ div.exercise {
 				font-family: 'Goudy Bookletter 1911', serif;
 				text-transform: uppercase;
 		}
+		.spaced-framed {
+				.spaced();
+				.framed();
+		}
 
 		
 		div.topToolbar {
@@ -1890,9 +1895,12 @@ div.exercise {
 				.noUserSelect();
 //				.noTouch();
 				touch-action: pan-y;
-				letter-spacing: 0.1em;
-				.spaced();
-				.framed();
+
+				.spaced-framed();
+				// letter-spacing: 0.1em;
+				// .spaced();
+				// .framed();
+
 				//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
 				// padding: 10px;
 				// margin: 15px 0;
