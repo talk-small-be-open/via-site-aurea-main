@@ -10,13 +10,13 @@ via:
 
 
   gemStone:
-    version: "3.4.5"
+    version: "3.6.5"
+    keyfile: 'site/files/Brodbeck-3.6.0.key'
 
   # Location of the source code (default github main repository)
   baseRepository:
     gitUrl: "https://github.com/talk-small-be-open/via-base-main.git"
     branch: 'aurea-master'
-
 
   # Technical name of project. Something like ViaSiteBla
   siteName: ViaSiteAurea
@@ -83,12 +83,8 @@ via:
 
   # Backup target (duplicity backends). See manual for duplicity for backend URLs
   backupTarget: ""
+  backupS3Endpoint: ""
 
-  # Set the passwort for duplicity backend in a root-visible file (env var FTP_PASSWORD)
-  # backupPassword: !vault |
-  #   $ANSIBLE_VAULT;1.1;AES256
-  #   PUT YOUR ENCRYPTED TEXT HERE
-  
   # Use this, if you need to set the privat key of your servers user
   # sshPrivateKey: !vault |
   #   $ANSIBLE_VAULT;1.1;AES256

@@ -1,6 +1,6 @@
 all:
   hosts:
-    xxxxvm1.hepverlag.ungleich.cloudxxxx:
-      ansible_user: root
+    cloud-hepverlag-01.nine.ch:
+      ansible_user: ubuntu
       ansible_python_interpreter: /usr/bin/python3
-      via_user: via
+      via_user: ubuntu

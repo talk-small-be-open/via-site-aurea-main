@@ -10,35 +10,34 @@ via:
 
 
   gemStone:
-    version: "3.4.5"
-    keyfile: 'site/files/Brodbeck-3.4.5.key'
+    version: "3.6.6"
+    keyfile: 'site/files/Brodbeck-3.6.0.key'
 
   # Location of the source code (default github main repository)
   baseRepository:
     gitUrl: "https://github.com/talk-small-be-open/via-base-main.git"
-    # TODO fork 'hep-master'
-    branch: 'master'
+    branch: 'aurea-master'
 
-  # Technical name of project. Something like ViaBlaBla
+  # Technical name of project. Something like ViaSiteBla
   siteName: ViaSiteAurea
   
   # The part of the source code which is custom to your via instance site
   siteRepository:
     gitUrl: "https://github.com/talk-small-be-open/via-site-aurea-main.git"
     metacelloUrl: "github://talk-small-be-open/via-site-aurea-src/src"
-    name: via-site-aurea-src
 
-  # Your organization names
-  organizationName: 'hep Verlag AG'
-  organizationShortName: 'hep'
+  # # Your organization names
+  # organizationName: 'hep Verlag AG'
+  # organizationShortName: 'hep'
 
   # Your domain of the web application (Must be reachable in your network!). Example: media.myorg.com
   appDomains:
-    - "app.aureabulla.online"
-  redirectedDomains:
+#    - "app.aurea-bulla.ch"
+    - "app.cloud-hepverlag-01.nine.ch"
+  redirectedDomains: []
     # - "app-beta.tocca-a-te.ch"
     # - "vm1.hepverlag.ungleich.cloud"
-  portalDomains:
+  portalDomains: []
 
   # Domain where your organization emails are from. Example: myorg.com
   #emailDomain: "tocca-a-te.ch"
@@ -51,7 +50,7 @@ via:
   # You probably should have an SMTP inhouse, anyway. If you need SMTP-authentication,
   # set the configuration options in the admin backend of via.
   # Example: smtp.myorg.com
-  # TODO: Which one? ungleich SMTP?
+  # TODO: Which one?
   smtpRelayhost: ""
 
   # Which authentication and user provider do you use? (Choose from: local, google, facebook).
@@ -61,8 +60,8 @@ via:
   gemPorts: [8087, 8088, 8089, 8090, 8091]
 
   integrationTest:
-    userEmail: jmeter.integration.tester@tocca.hep
-    userPassword: kjherwgh34t98sdfjhkq324tiuhasd98qz23riuhasdf98zq342jkhasdgdrth
+    userEmail: jmeter.integration.tester@aurea.hep
+    userPassword: jergih3w489sdfgjw34kjhsaduq34ifjhsdfkjh349hjhsdfkjh
       
   # ===== ADVANCED SETTINGS (Leave them untouched, if unsure) ==============
 
@@ -81,24 +80,10 @@ via:
   installationPath: "/opt/via"
 
   # Backup target (duplicity backends). See manual for duplicity for backend URLs
-  # TODO Real backend. Exoscale? ungleich backup ftp?
-#  backupTarget: "file:///tmp/via_backup"
-# TODO! ungleich cloud per webdav! und nicht s3 exoscale.
+  backupTarget: "boto3+s3://hep-aurea"
+  backupS3Endpoint: 'https://sos-ch-dk-2.exo.io'
 
-  backupTarget: "s3://sos-ch-dk-2.exo.io/hep-aurea"
-  #backupTarget: "s3://backup-space.nine.ch/mindclue/hep-tocca"
 
-  
-  
-  # # Set the passwort for duplicity backend in a root-visible file (env var FTP_PASSWORD)
-  # backupPassword: !vault |
-  #   $ANSIBLE_VAULT;1.1;AES256
-  #   32373932303934376331656334663432633463306162306639303334393661313064333966303463
-  #   3964376232653836306236313230326136656238616665650a303030363331396330376236393238
-  #   66353565643835613230386333356430306663663639343331613065613233393336613435393263
-  #   6666396434316137610a343638313830636332323162636536626361386365323961396563643838
-  #   30633332393734366334633931383663306361393464666133653231303338383037356639363663
-  #   6562663338376233363362313633636462363331333366393138
 
   # Use this, if you need to set the privat key of your servers user
   # sshPrivateKey: !vault |
