@@ -1,3 +1,9 @@
+1. If not otherwise stated, all the work in this folder and subfolders is covered by the AGPL license (see below).
+2. Explicitly excluded from this license statement are all image documents in this folder and subfolders.
+3. There might be other license statements for the work in subfolders, which overrule this general statement
+
+
+
 ### GNU AFFERO GENERAL PUBLIC LICENSE
 
 Version 3, 19 November 2007

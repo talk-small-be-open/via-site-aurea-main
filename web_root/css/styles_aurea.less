@@ -1166,7 +1166,7 @@ div.VIAAurModuleExerciser {
 		div.taskExercise {
 
 				// If opened and waiting for content, we want to see at least whitespace
-				min-height: 5em;
+				min-height: 1em;
 				
 				&.hiddenTaskExercise {
 						.hiddenSectionButWithDefinedDimension();
@@ -1188,8 +1188,13 @@ div.VIAAurModuleExerciser {
 div.VIAAurTaskExerciser {
 		padding-left: 0.2em;
 		padding-right: 0.2em;
-		margin-bottom: 4em;
+		margin-bottom: 2em;
 }
+
+.capitalis {
+		.capitalis();
+}
+
 
 // Not inside the VIAAurModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
 // Styles inside the content of tasks
@@ -1218,8 +1223,7 @@ div.exercise {
 				margin-right: 10%;
 		}
 		.capitalis {
-				font-family: 'Goudy Bookletter 1911', serif;
-				text-transform: uppercase;
+//				.capitalis();
 		}
 		.spaced-framed {
 				.spaced();
@@ -2132,21 +2136,25 @@ div.exercise {
 		
 		div.textListInput {
 
-				span.lineNumber {
-						color: @a-color-text-light;
-				}
+				margin-bottom: 2em;
 
 				div.hintFragments {
 						padding: 1em;
 						background-color: @a-color-background-light;
 						border: 1px solid black;
+						user-select: none;
 						
 						span.hintFragment {
 								margin: 0.5em;
-								cursor: pointer;
 
-								&:hover {
-										background-color: white;
+								&.typingAssisted {
+										cursor: pointer;
+										background-color: yellow;
+										padding: 0 0.2em;
+										border: 1px dotted #666;
+										&:hover {
+												background-color: white;
+										}
 								}
 						}
 
@@ -2155,31 +2163,51 @@ div.exercise {
 						}
 				}
 				
-				div.textInputs {
-						margin: 1em 0 2em 0;
+				div.textListLines {
 						
-						input[type=text].textListInput {
-								.clozeTextPlaceholder();
-								width: 80%;
-								caret-color: red;
+						margin: 0.5em 0 0.5em 0;
 
-								&.correct {
-										background-color: @correctColor;
-								}
-								&.wrong {
-										background-color: @wrongColor;
+						div.textListLine {
+								display: flex;
+								justify-content: space-between;
+
+								span.lineNumber {
+										color: @a-color-text-light;
+										display: inline-block;
+										width: 1.5em;
 								}
 
+								input[type=text].textInput {
+										.clozeTextPlaceholder();
+										width: 100%;
+										caret-color: red;
+
+										&.correct {
+												background-color: @correctColor;
+										}
+										&.wrong {
+												background-color: @wrongColor;
+										}
+
+										
+										&:focus {
+												outline: 1px solid #ccc;
+												background-color: #ffd;
+										}
+
+								}
+
+								span.clearLine {
+										cursor: pointer;
+										visibility: hidden;
+								}
+
+								&:hover, &:focus-within {
+										span.clearLine {
+												visibility: visible;
+										}										
+								}
 								
-								&:focus {
-										outline: 1px solid #ccc;
-										background-color: #ffd;
-								}
-
-						}
-
-						span.clearLine {
-								cursor: pointer;
 						}
 				}
 
@@ -2195,6 +2223,7 @@ div.exercise {
 						border: 1px solid #666;
 						background-color: #fefefe;
 						box-sizing: border-box;
+						resize: none;
 				}
 		}
 		

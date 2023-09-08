@@ -168,7 +168,7 @@ function processHtmlDocument(contextElement) {
 
 	if ( ! (typeof JoelPurra === 'undefined') ) {
 		$('input.clozeTextPlaceholder', contextElement).plusAsTab();
-		$('input.textListInput', contextElement).plusAsTab();
+		$('div.textListInput input.textInput', contextElement).plusAsTab();
 	}
 }
 
@@ -196,18 +196,18 @@ function scrollToExerciseTask(taskTitleElement) {
 
 
 // Helper for VIATextListInputTask
-function listInput_addText(id, text) {
+function listInput_addText(id, text, isWholeWord) {
 
 	var textToAdd = text;
 	const main = document.getElementById(id);
-	const element = $(main).data('lastInputElement') || $(main).find("div.textInputs input.textListInput")[0];
+	const element = $(main).data('lastInputElement') || $(main).find("div.textListLines input.textInput")[0];
 	const position = $(main).data('lastPosition') || 0;
   const originalText = element.value;
 
 	// Auto add space?
-	// if ( (position > 0) && (originalText.at(position-1) != " ") ) {
-	// 	textToAdd = ' ' + textToAdd;
-	// }
+	if ( isWholeWord && (position > 0) && (originalText.at(position-1) != " ") ) {
+		textToAdd = ' ' + textToAdd;
+	}
 	
   element.value = originalText.substring(0, position) + textToAdd + originalText.substring(position);
 	element.selectionStart = position + textToAdd.length;
@@ -227,14 +227,17 @@ function listInput_addSpace(id) {
 function listInput_gotoNextLine(id) {
 
 	const main = document.getElementById(id);
-	const emptyInputs = $(main).find("div.textInputs input.textListInput").filter(function() {
+	const emptyInputs = $(main).find("div.textListLines input.textInput").filter(function() {
     return !this.value;
 	});
 
 	const element = emptyInputs[0];
 
-	$(main).data('lastInputElement', element);
-	element.focus();
+	if (element) {
+		$(main).data('lastInputElement', element);
+		$(main).data('lastPosition', 0);
+		element.focus();
+	}
 	
 }
 
