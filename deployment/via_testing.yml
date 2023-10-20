@@ -51,9 +51,6 @@ via:
   # Example: smtp.myorg.com
   smtpRelayhost: ""
 
-  # Which authentication and user provider do you use? (Choose from: local, google, facebook).
-  identityProviders: [local]
-
   # Internal ports where the application gems will be listening behind the nginx reverse proxy
   gemPorts: [8087, 8088]
 

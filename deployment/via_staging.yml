@@ -11,7 +11,7 @@ via:
 
   gemStone:
     version: "3.6.5"
-    keyfile: 'site/files/Brodbeck-3.6.0.key'
+    keyfile: 'site/files/Brodbeck-3.6.x.key'
 
   # Location of the source code (default github main repository)
   baseRepository:
@@ -50,9 +50,6 @@ via:
   # set the configuration options in the admin backend of via.
   # Example: smtp.myorg.com
   smtpRelayhost: ""
-
-  # Which authentication and user provider do you use? (Choose from: local, google, facebook).
-  identityProviders: [local]
 
   # Internal ports where the application gems will be listening behind the nginx reverse proxy
   gemPorts: [8087, 8088]

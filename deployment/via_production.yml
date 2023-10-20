@@ -11,7 +11,7 @@ via:
 
   gemStone:
     version: "3.6.6"
-    keyfile: 'site/files/Brodbeck-3.6.0.key'
+    keyfile: 'site/files/Brodbeck-3.6.x.key'
 
   # Location of the source code (default github main repository)
   baseRepository:
@@ -32,7 +32,7 @@ via:
 
   # Your domain of the web application (Must be reachable in your network!). Example: media.myorg.com
   appDomains:
-#    - "app.aurea-bulla.ch"
+    - "app.aurea-bulla.ch"
     - "app.cloud-hepverlag-01.nine.ch"
   redirectedDomains: []
     # - "app-beta.tocca-a-te.ch"
@@ -52,9 +52,6 @@ via:
   # Example: smtp.myorg.com
   # TODO: Which one?
   smtpRelayhost: ""
-
-  # Which authentication and user provider do you use? (Choose from: local, google, facebook).
-  identityProviders: [local, hep]
 
   # Internal ports where the application gems will be listening behind the nginx reverse proxy
   gemPorts: [8087, 8088, 8089, 8090, 8091]

@@ -7,14 +7,14 @@
 // Fonts
 // =======================================================================
 
-// Roboto
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+// via typekit CSS-link bereits vorhanden: roboto, roboto-condensed, eb-garamond, leo, leo-small-text
 
-// Falsche Leo-Schrift (Merriweather)
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
-
-// Capitalis Monumentalis
-@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+// // Roboto
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+// // Falsche Leo-Schrift (Merriweather)
+// @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+// // Capitalis Monumentalis
+// @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
 
 
 // =======================================================================
@@ -126,21 +126,24 @@ html {
 
 // Our own SVG icon set
 span.svg-icon {
-		@size: 1.1em;
-		text-align: center;
-		font-size: @size;
-		//height: 1em;
+		@size: 1.4em;
 		width: @size;
 		display: inline-block;
-		svg.svg-icon {
-				//				width: 1.1em;
-				// height: 1em;
-				width: 100%;
-				height: 100%;
-				//stroke: currentcolor;
+		margin: 0 0.1em;
+//		padding: 1px;
+		box-sizing: border-box;
+
+		svg {
+				overflow: visible;
+				shape-rendering: auto;
+				stroke: currentcolor;
 				fill: currentcolor;
-				//				font-size: 1.25em;
-				// font-size: 1em;
+				stroke-width: 0px;
+				&.svg-icon {
+						width: 100%;
+						//				height: 100%;
+						//				vector-effect: non-scaling-stroke;
+				}
 		}
 }
 
@@ -242,6 +245,10 @@ body {
 										color: #666;
 								}
 						}
+
+						// div.core {
+						// 		padding: 0;
+						// }
 				}
 		}
 }
@@ -420,15 +427,16 @@ div.aureaHeader {
 		height: @a-header-height;
 
 		a.aureaLogo {
+				.serif();
 				font-size: 1.5rem;
-				font-weight: bold;
+//				font-weight: bold;
 				color: white;
 
-				svg.aureaLogo {
-						//stroke: currentcolor;
-						fill: currentcolor;
-						width: 2em;
-				}
+				// svg.aureaLogo {
+				// 		//stroke: currentcolor;
+				// 		fill: currentcolor;
+				// 		width: 2em;
+				// }
 		}
 
 		nav {
@@ -497,14 +505,14 @@ div.aureaHeader {
 										&.activeHome {
 												border-color: @a-color-main;
 												a svg {
-														stroke: @a-color-main;
+														// stroke: @a-color-main;
 														fill: @a-color-main;
 												}
 										}
 								}
 								span.svg-icon {
-										width: 1.3em;
-										font-size: 1.3em;
+										// width: 1.3em;
+										// font-size: 1.3em;
 								}
 						}
 
@@ -569,11 +577,12 @@ div.aureaHeader {
 
 				&.uk-offcanvas {
 						//						color: white;
-						div.uk-offcanvas-close {
-								span.svg-icon {
-										font-size: 2em;
-								}
-						}
+
+						// div.uk-offcanvas-close {
+						// 		span.svg-icon {
+						// 				font-size: 2em;
+						// 		}
+						// }
 						
 						ul.uk-nav {
 								li {
@@ -584,8 +593,7 @@ div.aureaHeader {
 												span.svg-icon, svg.svg-inline--fa.icon {
 														text-align: center;
 														display: inline-block;
-														width: 1.5rem;
-														//height: 1rem;
+//														width: 1.5rem;
 												}
 
 												span.menuEntryText {
@@ -656,7 +664,10 @@ div.VIAConfirmationComponent {
 
 div.VIAPublicHomeComponent {
 
-		padding-bottom: 1em;
+		padding: 2em 0;
+		background-color: @a-color-main;
+		//		position: relative;
+		
 		
 		div.aureaBanner {
 				// background-color: @t-color-red;
@@ -664,11 +675,31 @@ div.VIAPublicHomeComponent {
 				// background-repeat: no-repeat;
 				// background-size: cover;
 				padding: 0;
-				margin: 0;
+				margin-bottom: 2em;
+				position: relative;
 
-				// img.bannerImage {
-				// 		margin-bottom: 1em;
-				// }
+				img.bannerImage {
+						//						position: absolute;
+						display: block;
+				}
+
+				div.bannerText {
+						position: absolute;
+						width: 100%;
+						display: block;
+						margin: 3em 0 0 66%;
+						color: white;
+						font-family: @base-heading-font-family;
+						
+						div.bannerTextTitle {
+								font-size: 200%;
+								margin-bottom: 1em;
+						}
+
+						div.bannerTextSubtitle {
+								
+						}
+				}
 				
 				// div.title {
 				// 		background-image: url(/site/images/public_banner.jpg);
@@ -684,10 +715,12 @@ div.VIAPublicHomeComponent {
 		}
 		
 		div.loginSection {
-				margin: 2em 0;
+//				margin: 2em 0;
+//				position: relative;
 				font-size: 120%;
 				
-				.bigButtonStyle(@a-color-main, white, true);
+				
+				.bigButtonStyle(white, @a-color-main, false);
 
 		}
 
@@ -995,10 +1028,10 @@ div.VIAAurModuleExerciser {
 		h2.moduleTitle {
 //				color: @t-color-blue;
 //				text-align: center;
-				margin-top: 0.5em;
+				margin-top: 1em;
 				margin-bottom: 1em;
-				padding-left: 0.2em;
-				padding-right: 0.2em;
+				//padding-left: 0.2em;
+				//padding-right: 0.2em;
 
 //				.levelColors();
 
@@ -1066,9 +1099,11 @@ div.VIAAurModuleExerciser {
 				
 				&.isOpen {
 						background-color: #eee;
-						.accToggle {
-								.doOpen {display:none}
-								.doClose {display:inline}
+						div.right {
+								.accToggle {
+										.doOpen {display:none}
+										.doClose {display:inline-block}
+								}
 						}
 				}
 
@@ -1144,7 +1179,7 @@ div.VIAAurModuleExerciser {
 						.accToggle {
 								vertical-align: middle;
 								display: inline-block;
-								font-size: 2rem;
+//								font-size: 2rem;
 
 								// display: inline-flex;
 								// justify-content: space-between;
@@ -1154,7 +1189,7 @@ div.VIAAurModuleExerciser {
 								// 		vertical-align: middle;
 								// }
 								
-								.doOpen {display:inline}
+								.doOpen {display:inline-block}
 								.doClose {display:none}
 						}
 						
