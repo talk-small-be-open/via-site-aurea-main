@@ -54,13 +54,10 @@ via:
   # Internal ports where the application gems will be listening behind the nginx reverse proxy
   gemPorts: [8087, 8088]
 
-  # TURN Server (for peer to peer)
-  # turnServer:
-  #   secret: "blablawefihqkwehq34r98weufqkjefhasdf"
-  
+  # Unused for Staging
   integrationTest:
-    userEmail: jmeter.integration.tester@aurea.hep
-    userPassword: ij34tjkhwdfkjhq234fkjhasdfkjhq2kfjhasdkfjh
+    userEmail: 
+    userPassword: 
 
   # ===== ADVANCED SETTINGS (Leave them untouched, if unsure) ==============
 
@@ -79,8 +76,8 @@ via:
   installationPath: "/opt/via"
 
   # Backup target (duplicity backends). See manual for duplicity for backend URLs
-  backupTarget: ""
-  backupS3Endpoint: ""
+  backupTarget: 
+  backupS3Endpoint: 
 
   # Use this, if you need to set the privat key of your servers user
   # sshPrivateKey: !vault |
