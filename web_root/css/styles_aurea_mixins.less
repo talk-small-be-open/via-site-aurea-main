@@ -4,11 +4,12 @@
 
 // Big button base styles
 .bigButton {
-		text-align: center;
+		.serif();
+//		text-align: center;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 0.1em;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0.5em;
 		min-height: 1.5em;
 		cursor: pointer;
 		border: 2px solid @a-color-main;
@@ -16,6 +17,7 @@
 		text-decoration: none;
 		color: @a-color-main;
 		background-color: white;
+//		vertical-align: middle;
 
 		&:hover {
 				text-decoration: none;
@@ -34,29 +36,60 @@ a.bigButton {
 // Mixin, to define the style of a big button inside a region
 .bigButtonStyle(@color, @inverseColor: white, @isInversed: false) {
 		.bigButton {
-				@color1: if(@isInversed, @inverseColor, @color);
-				@color2: if(@isInversed, @color, @inverseColor);
 
-				background-color: @color2;
-				border-color: if(@isInversed, @color2, @color1);
-				color: @color1;
+				.aureaButton(@isInversed, @color, @inverseColor);
 
-				&:active, &.active {
-						background-color: @color1;
-						color: @color2;
-				}
+// 				@color1: if(@isInversed, @inverseColor, @color);
+// 				@color2: if(@isInversed, @color, @inverseColor);
 
-				&:hover {
-						background-color: @color1;
-						color: @color2;
-//						border-color: if(@isInversed, @color2, @color1);
-				}
+// 				background-color: @color2;
+// 				border-color: if(@isInversed, @color2, @color1);
+// 				color: @color1;
 
-				&.active:hover {
-						background-color: lighten(@color1, 20%);
-				}
+// 				&:active, &.active {
+// 						background-color: @color1;
+// 						color: @color2;
+// 				}
+
+// 				&:hover {
+// 						background-color: @color1;
+// 						color: @color2;
+// //						border-color: if(@isInversed, @color2, @color1);
+// 				}
+
+// 				&.active:hover {
+// 						background-color: lighten(@color1, 20%);
+// 				}
 		}
 }
+
+
+.aureaButton(@isInversed: false, @color: @a-color-main, @inverseColor: white){
+		@color1: if(@isInversed, @inverseColor, @color);
+		@color2: if(@isInversed, @color, @inverseColor);
+
+		background-color: @color2;
+		border-color: if(@isInversed, @color2, @color1);
+		color: @color1;
+		
+		&:active, &.active {
+				background-color: @color1;
+				text-decoration: none;
+				color: @color2;
+		}
+
+		&:hover {
+				background-color: @color1;
+				text-decoration: none;
+				color: @color2;
+		}
+
+		&.active:hover {
+				background-color: lighten(@color1, 20%);
+		}
+
+}
+
 
 // Siehe auch button.less im ui kit theme
 .button {
@@ -69,10 +102,13 @@ a.bigButton {
 
 // Items in a basic global list
 .catalogListItem() {
-		border-top-width: 1px;
-		border-top-style: solid;
-		border-top-color: @a-color-text-line;
-		padding: 0.2em 0;
+		.serif();
+		font-size: 22px; // TODO Pixel?
+		
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: @a-color-text-line;
+		padding: 0;
 		margin: 0;
 		background-clip: content-box;
 
@@ -136,31 +172,6 @@ a.bigButton {
 // 		.toccamoduleColorProperty(@selector, "color");
 // }
 
-.aureaButton(@isInversed: false){
-		@color1: if(@isInversed, white, @a-color-main);
-		@color2: if(@isInversed, @a-color-main, white);
-
-		background-color: @color2;
-		border-color: if(@isInversed, @color2, @color1);
-		color: @color1;
-		
-		&:active, &.active {
-				background-color: @color1;
-				text-decoration: none;
-				color: @color2;
-		}
-
-		&:hover {
-				background-color: @color1;
-				text-decoration: none;
-				color: @color2;
-		}
-
-		&.active:hover {
-				background-color: lighten(@color1, 20%);
-		}
-
-}
 
 // Prevent that the user can select text
 .noUserSelect() {
@@ -199,15 +210,6 @@ a.bigButton {
 
 
 
-
-
-
-
-.titleFontFamily() {
-		font-family: @base-heading-font-family;
-		color: @base-heading-color;
-}
-
 .secondaryNavbar() {
 		margin: 0;
 		color: white;
@@ -218,14 +220,10 @@ a.bigButton {
 
 		display: flex;
 		justify-content: space-between;
-		align-items: flex-start;
+		align-items: center;
 		position: sticky;
 		top: @a-header-height;
 		z-index: 99;
-
-		font-size: @base-h1-font-size;
-		line-height: @base-h1-line-height;
-
 
 		a {
 				color: inherit;
@@ -235,6 +233,12 @@ a.bigButton {
 				vertical-align: middle;
 				white-space: nowrap;
 		}
+
+		span.center {
+				font-size: @base-h1-font-size;
+				line-height: @base-h1-line-height;
+		}
+
 		
 }
 
@@ -250,6 +254,11 @@ a.bigButton {
 
 .sansSerif() {
 		font-family: roboto, sans-serif;
+}
+
+.titleFontFamily() {
+		font-family: @base-heading-font-family;
+		color: @base-heading-color;
 }
 
 

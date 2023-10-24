@@ -763,32 +763,40 @@ div.VIAAurStartComponent {
 				margin-bottom: 2em;
 		}
 
+		.mainEntryAnchor() {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				@pad: 0.5em;
+
+				span.entryTitle {
+						.serif();
+						// display: flex;
+						// justify-content: flex-start;
+						// align-items: flex-start;
+						flex-grow: 9;
+						padding: @pad 3px;
+				}
+
+				span.goAhead {
+						color: black; // @a-color-text;
+						flex-grow: 1;
+						flex-shrink: 0;
+						text-align: right;
+						padding: @pad 3px;
+				}
+		}
+
+		
 		div.caputs {
 				ul.caputsList {
 						li {
 								.catalogListItem();
 
 								div.caputEntry {
-										display: flex;
-										justify-content: space-between;
-										align-items: flex-start;
-
-										@pad: 0.5em;
-										
 										a.gotoCaput {
-
-												// display: flex;
-												// justify-content: flex-start;
-												// align-items: flex-start;
-												flex-grow: 9;
-												padding: @pad 3px;
-										}
-
-										span.goAhead {
-												flex-grow: 1;
-												flex-shrink: 0;
-												text-align: right;
-												padding: @pad 3px;
+												.mainEntryAnchor();
 										}
 								}
 						}
@@ -802,24 +810,9 @@ div.VIAAurStartComponent {
 
 								.catalogListItem();
 
-								display: flex;
-								justify-content: space-between;
-								align-items: flex-start;
-
-								@pad: 0.5em;
-								
 								a.gotoExtra {
-										flex-grow: 9;
-										padding: @pad 3px;
+										.mainEntryAnchor();
 								}
-
-								span.goAhead {
-										flex-grow: 1;
-										flex-shrink: 0;
-										text-align: right;
-										padding: @pad 3px;
-								}
-								
 						}
 				}
 		}
@@ -969,9 +962,9 @@ div.VIAAurModuleExerciser {
 
 				span.left {
 						text-align: left;
-						display: inline-block;
+//						display: inline-block;
 						width: 3em;
-						padding-left: 0.2em;
+						padding-left: 1em;
 
 						// a.uk-button {
 						// 		vertical-align: top;
@@ -986,9 +979,9 @@ div.VIAAurModuleExerciser {
 				
 				span.right {
 						text-align: right;
-						display: inline-block;
+//						display: inline-block;
 						width: 3em;						
-						padding-right: 0.2em;
+						padding-right: 1em;
 				}
 				
 				span.arrow {
@@ -1035,22 +1028,27 @@ div.VIAAurModuleExerciser {
 
 //				.levelColors();
 
-				span.level {
-						width: 1em;
-						display: inline-block;
-						position: relative;
-						margin-left: -1em;
-//						margin-right: -1em;
-						top: -0.5em; // Optical centering
-						img.level {
-								height: 0.5em;
-								vertical-align: baseline;
-						}
-				}
+				// span.level {
+				// 		width: 1em;
+				// 		display: inline-block;
+				// 		position: relative;
+				// 		margin-left: -1em;
+				// 		top: -0.5em; // Optical centering
+				// 		img.level {
+				// 				height: 0.5em;
+				// 				vertical-align: baseline;
+				// 		}
+				// }
 
 				// &.allMothertongue {
 				// 		color: @t-color-level-mothertongue;
 				// }
+
+				span.divider {
+						font-weight: normal;
+						margin: 0 1em;
+				}
+				
 		}
 
 		div.moduleBody {
@@ -1112,13 +1110,13 @@ div.VIAAurModuleExerciser {
 						padding: @pad 0;
 						display: flex;
 						justify-content: flex-start;
-						align-items: flex-start;
+						align-items: center;
 
 						span.level {
 								width: 2em;
 								padding-top: 0.2em;
 								flex-shrink: 0;
-								align-self: center;
+//								align-self: center;
 								display: inline-block;
 								// position: relative;
 								// top: 2px; // Optical centering
@@ -1131,12 +1129,14 @@ div.VIAAurModuleExerciser {
 						
 						.accTitle {
 								.titleFontFamily();
+								font-weight: normal;
 								padding: 0.5em 0;
 								margin: 0;
 								margin-right: 0.6em;
 								display: inline;
 //								color: @t-color-blue;
 								text-align: left;
+								align-self: flex-start;
 						}
 
 
@@ -1155,14 +1155,17 @@ div.VIAAurModuleExerciser {
 				}
 
 				div.right {
-//						display: flex;
-						white-space: nowrap;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						
+//						white-space: nowrap;
 						flex-shrink: 0;
 						padding: @pad 0;
 						
 						span.accActions {
-								vertical-align: middle;
-								display: inline-block;
+//								vertical-align: middle;
+//								display: inline-block;
 								font-size: 1.5rem;
 								margin: 0.3em 1em;
 
@@ -1177,9 +1180,10 @@ div.VIAAurModuleExerciser {
 						}
 
 						.accToggle {
-								vertical-align: middle;
-								display: inline-block;
-//								font-size: 2rem;
+								// vertical-align: middle;
+								// display: inline-block;
+
+								//								font-size: 2rem;
 
 								// display: inline-flex;
 								// justify-content: space-between;
@@ -2324,9 +2328,9 @@ ul.modulesList {
 
 
 				div.moduleEntry {
-						display: flex;
-						justify-content: flex-start;
-						align-items: flex-start;
+						// display: flex;
+						// justify-content: flex-start;
+						// align-items: flex-start;
 
 						@pad: 0.5em;
 						
@@ -2335,7 +2339,7 @@ ul.modulesList {
 								display: flex;
 								justify-content: flex-start;
 								align-items: flex-start;
-								flex-grow: 9;
+//								flex-grow: 9;
 								padding: @pad 3px;
 
 								span.indexCode {
@@ -2343,7 +2347,6 @@ ul.modulesList {
 										display: inline-block;
 										width: 2.5em;
 										flex-shrink: 0;
-										//						font-weight: normal;
 								}
 
 								span.level {
@@ -2360,37 +2363,38 @@ ul.modulesList {
 
 								span.moduleTitle {
 										.titleFontFamily();
-										flex-grow: 0;
+										flex-grow: 9;
 										flex-basis: auto;
 										// display: inline-block;
 										// width: auto;
 								}
 
 
-						}
-						
+								span.rightStuff {
+										flex-grow: 1;
+										flex-shrink: 0;
+										text-align: right;
+//										padding: @pad 0;
 
-						span.rightStuff {
-								flex-grow: 1;
-								flex-shrink: 0;
-								text-align: right;
-								padding: @pad 0;
+										// Shitty little pixels offsets!
+										> * {
+												vertical-align: bottom;
+										}
+										
+										
+										span.moduleStatus {
+												margin-right: 1em;
+										}
 
-								// Shitty little pixels offsets!
-								> * {
-										vertical-align: bottom;
+										span.goAhead {
+												color: black;
+										}
 								}
 								
-						
-								span.moduleStatus {
-									//	color: black;
-										margin-right: 1em;
-								}
 
-								span.goAhead {
-								//		color: black;
-								}
 						}
+						
+
 
 						
 						span.betatesterSign {
