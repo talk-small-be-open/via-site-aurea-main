@@ -2265,6 +2265,60 @@ div.exercise {
 						resize: none;
 				}
 		}
+
+		div.glossary {
+				margin: 2em 0;
+				
+				div.glossaryToolbar {
+						margin-bottom: 0.5em;
+						display: flex;
+						justify-content: space-between;
+						align-items: flex-start;
+						
+						span.jumpers {
+								margin-right: 1em;
+								span.jumper {
+										cursor: pointer;
+										margin: 0 0.2em;
+										display: inline-block;
+								}
+						}
+						
+				}
+				div.glossaryBody {
+						max-height: 80vh;
+						overflow-y: auto;
+						table.glossaryEntries {
+								width: 100%;
+						
+								tr.glossaryEntry {
+
+										border-top: 1px solid black;
+										border-bottom: 1px solid black;
+
+										td.title {
+												font-weight: bold;
+												vertical-align: top;
+										}
+										
+										&.searchFound {
+												background-color: lightyellow;
+										}
+										&.searchFoundInTitle, &.internalGoto {
+												background-color: yellow;
+										}										
+										&.searchNotFound {
+												display: none;
+										}
+										&.section {
+												td.title {
+														background-color: #eee;
+												}
+										}
+								}
+						}
+				}
+		}
 		
 } // div.exercise
 

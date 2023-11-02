@@ -195,7 +195,10 @@ function scrollToExerciseTask(taskTitleElement) {
 // }
 
 
-// Helper for VIATextListInputTask
+//
+// Helpers for VIATextListInputTask
+//
+
 function listInput_addText(id, text, isWholeWord) {
 
 	var textToAdd = text;
@@ -223,7 +226,6 @@ function listInput_addSpace(id) {
 }
 
 
-// Helper for VIATextListInputTask
 function listInput_gotoNextLine(id) {
 
 	const main = document.getElementById(id);
@@ -240,6 +242,92 @@ function listInput_gotoNextLine(id) {
 	}
 	
 }
+
+//
+// Helpers for glossary
+//
+
+function glossary_jumpTo(glossaryId, jumpId) {
+	const glossary = document.getElementById(glossaryId);
+	const entry = document.getElementById(jumpId);
+	const glossaryBody = $("div.glossaryBody", glossary).get(0);
+
+	glossary_reset(glossaryId);
+	glossaryBody.scroll({behavior: 'smooth', top: $(entry).position().top });
+	
+}
+
+function glossary_internalGotoTitle(clickedElement, titleText) {
+	const glossary = $(clickedElement).closest('div.glossary').get(0);
+	const searchText = titleText.toLowerCase();
+
+	// Search entry by title exact match
+	// OPTIMIZE: Stop after first hit. jquery cant do that?
+	const all = $(".glossaryEntry", glossary).filter(function() {
+
+		const entry = $(this);
+		const title = $(".title", entry);
+		
+		// Check content
+    return title.text().toLowerCase() == searchText;
+	});
+
+	const entry = all.first();
+
+	if (entry) {
+		const glossaryBody = $("div.glossaryBody", glossary).get(0);
+		
+		glossary_reset(glossary.id);
+		entry.addClass('internalGoto');
+		glossaryBody.scroll({behavior: 'smooth', top: entry.position().top });
+	}
+	
+}
+
+function glossary_reset(glossaryId) {
+
+	const glossary = document.getElementById(glossaryId);
+	const searchInput = $("input.searchText", glossary);
+
+	$(searchInput).val('');
+	$(".glossaryEntry", glossary).removeClass('searchFound searchFoundInTitle searchNotFound internalGoto');
+
+}
+
+function glossary_liveSearch(glossaryId) {
+
+	const glossary = document.getElementById(glossaryId);
+	const searchInput = $("input.searchText", glossary);
+	const text = searchInput.val().toLowerCase();
+
+	// Remove search completely, if empty search text
+	if ( !text ) {
+		glossary_reset(glossaryId);
+		return;
+	}
+	
+	// Search text
+	$(".glossaryEntry", glossary).each(function() {
+
+		const elem = $(this);
+		
+		// Check content
+    if ( elem.text().toLowerCase().indexOf(text) >= 0 ) {
+			elem.addClass('searchFound').removeClass('searchNotFound');
+
+			// Subcheck, if hit is in the title
+			if ( $(".title", elem).text().toLowerCase().indexOf(text) >= 0 ) {
+				elem.addClass('searchFoundInTitle')
+			}
+			
+		} else {
+			elem.addClass('searchNotFound').removeClass('searchFound searchFoundInTitle')
+		}
+	})
+
+}
+
+
 
 
 /* Haupt JS init */
