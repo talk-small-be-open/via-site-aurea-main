@@ -125,13 +125,17 @@ html {
 }
 
 // Our own SVG icon set
-span.svg-icon {
-		@size: 1.4em;
-		width: @size;
+.standardIcon() {
+		@iconSize: 1.2em;
+		width: @iconSize;
 		display: inline-block;
 		margin: 0 0.1em;
 //		padding: 1px;
-		box-sizing: border-box;
+		box-sizing: border-box;		
+}
+
+span.svg-icon {
+		.standardIcon();
 
 		svg {
 				overflow: visible;
@@ -145,6 +149,11 @@ span.svg-icon {
 						//				vector-effect: non-scaling-stroke;
 				}
 		}
+}
+
+// Same standard size for FontAwesome icons
+svg.svg-inline--fa.icon {
+		.standardIcon();
 }
 
 body {
@@ -432,6 +441,22 @@ div.aureaHeader {
 //				font-weight: bold;
 				color: white;
 
+				span.aureaLogo {
+						
+						&.wide {
+								img {
+										width: 8em;
+								}
+						}
+						&.tall {
+								display: none;
+								img {
+										width: 4em;
+								}
+						}
+				}
+
+
 				// svg.aureaLogo {
 				// 		//stroke: currentcolor;
 				// 		fill: currentcolor;
@@ -565,6 +590,7 @@ div.aureaHeader {
 								font-weight: bold;
 
 								ul.uk-nav-sub {
+										padding: 0;
 										li {
 												font-size: 1.1rem;
 												font-weight: normal;
@@ -593,7 +619,7 @@ div.aureaHeader {
 												span.svg-icon, svg.svg-inline--fa.icon {
 														text-align: center;
 														display: inline-block;
-//														width: 1.5rem;
+														width: 1.1rem;
 												}
 
 												span.menuEntryText {
@@ -1059,9 +1085,16 @@ div.VIAAurModuleExerciser {
 		// Accordion top line
 
 		.fatLineDivider() {
-				border-top-width: 1px;
-				border-top-style: solid;
-				border-top-color: @a-color-text-line;
+				border-bottom-width: 1px;
+				border-bottom-style: solid;
+				border-bottom-color: @a-color-text-line;
+
+				&:first-child {
+						border-top-width: 1px;
+						border-top-style: solid;
+						border-top-color: @a-color-text-line;
+						
+				}
 		}
 
 
@@ -2278,6 +2311,7 @@ div.exercise {
 						span.jumpers {
 								margin-right: 1em;
 								span.jumper {
+										font-weight: bold;
 										cursor: pointer;
 										margin: 0 0.2em;
 										display: inline-block;
@@ -2286,8 +2320,14 @@ div.exercise {
 						
 				}
 				div.glossaryBody {
-						max-height: 80vh;
-						overflow-y: auto;
+
+						&.scrolling {
+								@h: 80vh;
+								max-height: @h;
+								overflow-y: auto;
+//								padding-bottom: @h; // so we can scroll up the bottom line
+						}
+
 						table.glossaryEntries {
 								width: 100%;
 						
@@ -2300,20 +2340,22 @@ div.exercise {
 												font-weight: bold;
 												vertical-align: top;
 										}
+										&.section {
+												td.title {
+														background-color: #eee;
+												}
+										}
 										
 										&.searchFound {
 												background-color: lightyellow;
 										}
 										&.searchFoundInTitle, &.internalGoto {
-												background-color: yellow;
+												td, td.title {
+														background-color: yellow;
+												}
 										}										
 										&.searchNotFound {
 												display: none;
-										}
-										&.section {
-												td.title {
-														background-color: #eee;
-												}
 										}
 								}
 						}
@@ -2339,8 +2381,9 @@ div.VIAUnitComponent {
 
 				span.left {
 						text-align: left;
-						display: inline-block;
+//						display: inline-block;
 						width: 3em;						
+						padding-left: 1em;
 				}
 
 				span.right {
@@ -2382,9 +2425,9 @@ ul.modulesList {
 
 
 				div.moduleEntry {
-						// display: flex;
-						// justify-content: flex-start;
-						// align-items: flex-start;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
 
 						@pad: 0.5em;
 						
@@ -2392,8 +2435,8 @@ ul.modulesList {
 								//						white-space: nowrap;
 								display: flex;
 								justify-content: flex-start;
-								align-items: flex-start;
-//								flex-grow: 9;
+								align-items: center;
+								flex-grow: 9;
 								padding: @pad 3px;
 
 								span.indexCode {
@@ -2423,26 +2466,29 @@ ul.modulesList {
 										// width: auto;
 								}
 
+						}
+						span.rightStuff {
+								flex-grow: 1;
+								flex-shrink: 0;
+								//										text-align: right;
 
-								span.rightStuff {
-										flex-grow: 1;
-										flex-shrink: 0;
-										text-align: right;
-//										padding: @pad 0;
+								display: flex;
+								justify-content: flex-end;
+								align-items: center;
+								//										padding: @pad 0;
 
-										// Shitty little pixels offsets!
-										> * {
-												vertical-align: bottom;
-										}
-										
-										
-										span.moduleStatus {
-												margin-right: 1em;
-										}
+								// Shitty little pixels offsets!
+								> * {
+										vertical-align: bottom;
+								}
+								
+								
+								span.moduleStatus {
+								}
 
-										span.goAhead {
-												color: black;
-										}
+								span.goAhead {
+										margin-left: 1em;
+										color: black;
 								}
 								
 
@@ -2556,14 +2602,14 @@ div.VIAAurMyPortfolioComponent {
 				font-size: 80%;
 		}
 
-		a.deleteAction {
-//				margin-top: 0.3em;
-				margin-right: 1em;
-//				flex-shrink: 0;
-//				color: black;
-//				float: right;
-//				vertical-align: bottom;
-		}
+// 		a.deleteAction {
+// //				margin-top: 0.3em;
+// 				margin-right: 1em;
+// //				flex-shrink: 0;
+// //				color: black;
+// //				float: right;
+// //				vertical-align: bottom;
+// 		}
 		
 }
 
@@ -2782,6 +2828,11 @@ div.VIAAurExerciserSolutionComponent {
 						}
 				}
 		}
+}
+
+
+div.VIAAurMainGlossaryExerciser {
+		padding-top: 2em;
 }
 
 // // div.VIAAurExerciserFinishedComponent {

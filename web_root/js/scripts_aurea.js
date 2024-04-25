@@ -253,45 +253,66 @@ function glossary_jumpTo(glossaryId, jumpId) {
 	const glossaryBody = $("div.glossaryBody", glossary).get(0);
 
 	glossary_reset(glossaryId);
+	$(entry).addClass('internalGoto');
+	$(glossaryBody).addClass('scrolling');
 	glossaryBody.scroll({behavior: 'smooth', top: $(entry).position().top });
 	
 }
 
-function glossary_internalGotoTitle(clickedElement, titleText) {
-	const glossary = $(clickedElement).closest('div.glossary').get(0);
-	const searchText = titleText.toLowerCase();
-
-	// Search entry by title exact match
-	// OPTIMIZE: Stop after first hit. jquery cant do that?
-	const all = $(".glossaryEntry", glossary).filter(function() {
-
-		const entry = $(this);
-		const title = $(".title", entry);
-		
-		// Check content
-    return title.text().toLowerCase() == searchText;
-	});
-
-	const entry = all.first();
+function glossary_jumpToReference(clickedElement, jumpId) {
+	const entry = document.getElementById(jumpId);
 
 	if (entry) {
+		const glossary = $(clickedElement).closest('div.glossary').get(0);
 		const glossaryBody = $("div.glossaryBody", glossary).get(0);
-		
-		glossary_reset(glossary.id);
-		entry.addClass('internalGoto');
-		glossaryBody.scroll({behavior: 'smooth', top: entry.position().top });
-	}
 	
+		glossary_reset(glossary.id);
+		$(entry).addClass('internalGoto');
+		$(glossaryBody).addClass('scrolling');
+		glossaryBody.scroll({behavior: 'smooth', top: $(entry).position().top });
+//		window.scroll({behavior: 'smooth', top: $(entry).position().top });
+	}
 }
+
+
+// function glossary_internalGotoReference(clickedElement, searchReferenceCode) {
+// 	const glossary = $(clickedElement).closest('div.glossary').get(0);
+// 	const searchText = searchReferenceCode.toLowerCase();
+
+// 	// Search entry by title exact match
+// 	// OPTIMIZE: Stop after first hit. jquery cant do that?
+// 	const all = $(".glossaryEntry", glossary).filter(function() {
+
+// 		const entry = $(this);
+// 		const referenceCode = $(".referenceCode", entry);
+		
+// 		// Check content
+//     return referenceCode.text().toLowerCase() == searchText;
+// 	});
+
+// 	const entry = all.first();
+
+// 	if (entry) {
+// 		const glossaryBody = $("div.glossaryBody", glossary).get(0);
+		
+// 		glossary_reset(glossary.id);
+// 		entry.addClass('internalGoto');
+// 		glossaryBody.scroll({behavior: 'smooth', top: entry.position().top });
+// 	}
+	
+// }
 
 function glossary_reset(glossaryId) {
 
 	const glossary = document.getElementById(glossaryId);
+	const glossaryBody = $("div.glossaryBody", glossary);
 	const searchInput = $("input.searchText", glossary);
 
 	$(searchInput).val('');
 	$(".glossaryEntry", glossary).removeClass('searchFound searchFoundInTitle searchNotFound internalGoto');
+	glossaryBody.removeClass('scrolling');
 
+	
 }
 
 function glossary_liveSearch(glossaryId) {

@@ -105,9 +105,6 @@ a.bigButton {
 		.serif();
 		font-size: 22px; // TODO Pixel?
 		
-		border-bottom-width: 1px;
-		border-bottom-style: solid;
-		border-bottom-color: @a-color-text-line;
 		padding: 0;
 		margin: 0;
 		background-clip: content-box;
@@ -117,6 +114,16 @@ a.bigButton {
 		// align-items: flex-start;
 
 		color: @a-color-main;
+
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: @a-color-text-line;
+
+		&:first-child {
+				border-top-width: 1px;
+				border-top-style: solid;
+				border-top-color: @a-color-text-line;
+		}
 		
 		a {
 				color: inherit;
@@ -217,6 +224,7 @@ a.bigButton {
 		padding: 0;
 		background-color: @a-color-main;
 		margin-bottom: 0;
+		min-height: @base-h1-line-height;
 
 		display: flex;
 		justify-content: space-between;
@@ -236,7 +244,7 @@ a.bigButton {
 
 		span.center {
 				font-size: @base-h1-font-size;
-				line-height: @base-h1-line-height;
+//				line-height: @base-h1-line-height;
 		}
 
 		

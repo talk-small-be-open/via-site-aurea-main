@@ -79,9 +79,11 @@ via:
   # Backup target (duplicity backends). See manual for duplicity for backend URLs
   # backupTarget: "boto3+s3://hep-aurea"
   # backupS3Endpoint: 'https://sos-ch-dk-2.exo.io'
-  backupTarget: "boto3+s3://hep-tocca"
-  backupS3Endpoint: 'https://es34.objectstorage.nineapis.ch'
-
+  # backupTarget: "boto3+s3://hep-aurea"
+  # backupS3Endpoint: 'https://es34.objectstorage.nineapis.ch'
+  # Neu ab 04.2024 https://es34.objects.nineapis.ch/hep-aurea-backup
+  backupTarget: "boto3+s3://hep-aurea-backup"
+  backupS3Endpoint: 'https://es34.objects.nineapis.ch'
 
 
   # Use this, if you need to set the privat key of your servers user

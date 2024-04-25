@@ -35,7 +35,15 @@
 				height: @a-header-height-small;
 
 				a.aureaLogo {
-						font-size: 1rem;
+						span.aureaLogo {
+						
+								&.wide {
+										display: none;
+								}
+								&.tall {
+										display: unset;
+								}
+						}
 				}
 
 				nav {
