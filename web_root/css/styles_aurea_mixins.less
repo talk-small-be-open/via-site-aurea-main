@@ -36,30 +36,7 @@ a.bigButton {
 // Mixin, to define the style of a big button inside a region
 .bigButtonStyle(@color, @inverseColor: white, @isInversed: false) {
 		.bigButton {
-
 				.aureaButton(@isInversed, @color, @inverseColor);
-
-// 				@color1: if(@isInversed, @inverseColor, @color);
-// 				@color2: if(@isInversed, @color, @inverseColor);
-
-// 				background-color: @color2;
-// 				border-color: if(@isInversed, @color2, @color1);
-// 				color: @color1;
-
-// 				&:active, &.active {
-// 						background-color: @color1;
-// 						color: @color2;
-// 				}
-
-// 				&:hover {
-// 						background-color: @color1;
-// 						color: @color2;
-// //						border-color: if(@isInversed, @color2, @color1);
-// 				}
-
-// 				&.active:hover {
-// 						background-color: lighten(@color1, 20%);
-// 				}
 		}
 }
 
@@ -109,10 +86,6 @@ a.bigButton {
 		margin: 0;
 		background-clip: content-box;
 
-		// display: flex;
-		// justify-content: flex-start;
-		// align-items: flex-start;
-
 		color: @a-color-main;
 
 		border-bottom-width: 1px;
@@ -136,48 +109,8 @@ a.bigButton {
 				background-color: @a-color-background-light;
 		}
 
-		// a:first-child {
-		// 		padding: 0.5em 3px;
-		// 		color: inherit;
-		// 		display: inline-block;
-		// 		//width: 80%;
-		// }
 }
 
-// // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// // a properts to the unit's main color
-// // Example: .toccamoduleBackgroundColor("div.control span.button")
-// .toccamoduleColorProperty(@selector, @property){
-// 		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-// 		@p: e(@property);
-// 		&.toccamodule1 { @{s} { @{p}: @t-color-toccamodule1;} }
-// 		&.toccamodule2 { @{s} { @{p}: @t-color-toccamodule2;} }
-// 		&.toccamodule3 { @{s} { @{p}: @t-color-toccamodule3;} }
-// 		&.toccamoduleP { @{s} { @{p}: @t-color-palloncini;} }
-// 		&.toccamoduleV { @{s} { @{p}: @t-color-vocabolario;} }
-// 		&.toccamoduleExtras { @{s} { @{p}: @t-color-toccamoduleExtras;} }
-// }
-
-// // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// // the background color to the unit's main color
-// // Example: .toccamoduleBackgroundColor("div.control span.button")
-// .toccamoduleBackgroundColor(@selector){
-// 		.toccamoduleColorProperty(@selector, "background-color");
-// }
-
-// // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// // the border color to the unit's main color
-// // Example: .toccamoduleBorderColor("div.control span.button")
-// .toccamoduleBorderColor(@selector){
-// 		.toccamoduleColorProperty(@selector, "border-color");
-// }
-
-// // Use this on html elements which are decorated with a "toccamoduleX" css class, to set
-// // the text color to the unit's main color
-// // Example: .toccamoduleColor("h1")
-// .toccamoduleColor(@selector){
-// 		.toccamoduleColorProperty(@selector, "color");
-// }
 
 
 // Prevent that the user can select text
