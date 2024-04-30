@@ -247,15 +247,20 @@ function listInput_gotoNextLine(id) {
 // Helpers for glossary
 //
 
+function glossary_scrollTo(glossary, entry) {
+	const glossaryBody = $("div.glossaryBody", glossary).get(0);
+	$(glossaryBody).addClass('scrolling');
+	glossaryBody.scroll({behavior: 'smooth', top: $(entry).position().top });	
+}
+
 function glossary_jumpTo(glossaryId, jumpId) {
 	const glossary = document.getElementById(glossaryId);
 	const entry = document.getElementById(jumpId);
-	const glossaryBody = $("div.glossaryBody", glossary).get(0);
 
 	glossary_reset(glossaryId);
 	$(entry).addClass('internalGoto');
-	$(glossaryBody).addClass('scrolling');
-	glossaryBody.scroll({behavior: 'smooth', top: $(entry).position().top });
+
+	glossary_scrollTo(glossary, entry);
 	
 }
 
@@ -264,13 +269,12 @@ function glossary_jumpToReference(clickedElement, jumpId) {
 
 	if (entry) {
 		const glossary = $(clickedElement).closest('div.glossary').get(0);
-		const glossaryBody = $("div.glossaryBody", glossary).get(0);
+//		const glossaryBody = $("div.glossaryBody", glossary).get(0);
 	
 		glossary_reset(glossary.id);
 		$(entry).addClass('internalGoto');
-		$(glossaryBody).addClass('scrolling');
-		glossaryBody.scroll({behavior: 'smooth', top: $(entry).position().top });
-//		window.scroll({behavior: 'smooth', top: $(entry).position().top });
+
+		glossary_scrollTo(glossary, entry);
 	}
 }
 
@@ -302,6 +306,8 @@ function glossary_jumpToReference(clickedElement, jumpId) {
 	
 // }
 
+
+// Put the glossary in the initial state, no filter, no highlight, no scrolling
 function glossary_reset(glossaryId) {
 
 	const glossary = document.getElementById(glossaryId);
@@ -309,7 +315,7 @@ function glossary_reset(glossaryId) {
 	const searchInput = $("input.searchText", glossary);
 
 	$(searchInput).val('');
-	$(".glossaryEntry", glossary).removeClass('searchFound searchFoundInTitle searchNotFound internalGoto');
+	$(".glossaryEntry", glossary).removeClass('searchFound searchFoundInTitle searchIsTitle searchNotFound internalGoto');
 	glossaryBody.removeClass('scrolling');
 
 	
@@ -320,31 +326,62 @@ function glossary_liveSearch(glossaryId) {
 	const glossary = document.getElementById(glossaryId);
 	const searchInput = $("input.searchText", glossary);
 	const text = searchInput.val().toLowerCase();
+	var fullHitElem;
 
 	// Remove search completely, if empty search text
 	if ( !text ) {
 		glossary_reset(glossaryId);
 		return;
 	}
-	
-	// Search text
+
+	// Reset scrolling UI, normally not scrolling.
+	const glossaryBody = $("div.glossaryBody", glossary);
+	glossaryBody.removeClass('scrolling');
+
+	// Search text in all rows
 	$(".glossaryEntry", glossary).each(function() {
 
 		const elem = $(this);
-		
-		// Check content
-    if ( elem.text().toLowerCase().indexOf(text) >= 0 ) {
-			elem.addClass('searchFound').removeClass('searchNotFound');
+		const title = $(".title", elem).text().toLowerCase();
+		const simpleTerm = elem.get(0).dataset.simpleTerm.toLowerCase();
+		var found = false;
 
-			// Subcheck, if hit is in the title
-			if ( $(".title", elem).text().toLowerCase().indexOf(text) >= 0 ) {
+		// Reset attributes from maybe previous search
+		elem.removeClass('searchFoundInTitle searchIsTitle internalGoto');
+	
+		// Check full text content
+    if ( elem.text().toLowerCase().indexOf(text) >= 0 ) {
+			
+			found = true;
+
+			// Sub-check, if hit is in the title
+			if ( title.indexOf(text) >= 0 ) {
 				elem.addClass('searchFoundInTitle')
 			}
-			
-		} else {
-			elem.addClass('searchNotFound').removeClass('searchFound searchFoundInTitle')
+
 		}
-	})
+
+		// Check, if hit is = title, either by shown title with accents or by simple term with normalized accents
+		// Jump to by scroll
+		if ( (title == text) || (simpleTerm == text) ) {
+			found = true;
+			elem.addClass('searchIsTitle');
+			fullHitElem = elem.get(0);
+		}
+
+		// Switch visibility down here, for smooth hide/show
+		if (found) {
+			elem.addClass('searchFound').removeClass('searchNotFound');
+		} else {
+			elem.addClass('searchNotFound').removeClass('searchFound');
+		}
+
+
+	});
+
+	if (fullHitElem) {
+		glossary_scrollTo(glossary, fullHitElem);
+	}
 
 }
 

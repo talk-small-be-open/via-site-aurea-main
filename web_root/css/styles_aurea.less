@@ -55,7 +55,7 @@
 
 
 @a-color-blue: @a-color-main;
-@a-color-red: red;
+@a-color-red: #f66;
 @a-color-aureaExtras: @a-color-main;
 
 
@@ -148,32 +148,50 @@ body {
 				}
 		}
 
-		div.footer {
-				padding: 40px 50px;
-				background-color: @a-color-black;
-				color: white;
-
-				a {
-						color: white;
-				}
-
-				div.company {
-						margin-bottom: 2em;
-						img.hepLogo {
-								vertical-align: top;
-								width: 230px;
-						}
-						
-						div.address {
-								font-size: 18px;
-								line-height: 28px;
-								margin-top: 2em;
-						}
-						
-				}
+		// Tricky thing, to make the footer sticky on the bottom, but only if coming into viewport.
+		// Idea take from https://stackoverflow.com/questions/54471322/css-position-sticky-to-bottom-when-enter-viewport
+//		div.footerStickinessParent {
+				// div.scrollSpacer {
+				// 		height: 300px;
+				// }
 				
-		}
+				div.footer {
+						// position: sticky;
+						// bottom: 0;
 
+						padding-top: 40px;
+						padding-bottom: 20px;
+						padding-left: @container-padding-horizontal;
+						padding-right: @container-padding-horizontal;
+						background-color: @a-color-black;
+						color: white;
+
+						// div.footerMenu {
+						// 		position: sticky;
+						// 		bottom: 0;
+						// }
+
+						a {
+								color: white;
+						}
+
+						div.company {
+								margin-bottom: 1em;
+								img.hepLogo {
+										vertical-align: top;
+										width: 230px;
+								}
+								
+								div.address {
+										// font-size: 18px;
+										// line-height: 28px;
+										margin-top: 2em;
+								}
+								
+						}
+						
+				}
+	//	}
 
 		&.wantColorBackground {
 				min-height: 100vh;
@@ -193,11 +211,21 @@ body {
 		// Styles for the non-logged in public UI
 		&.public {
 
+//				max-height: 100vh;
+				
 				input.submit, button, a.uk-button {
 						color: white;
 						border-color: white;
 				}
 
+				div.mainContainer {
+						div.footer {
+								position: sticky;
+								bottom: 0;
+								width: 100%;
+								box-sizing: border-box;
+						}
+				}
 				div.coreContainer {
 						a {
 								color: black;
@@ -214,6 +242,15 @@ body {
 //WEG: Conflict with mediaelement and anyway to general: button
 input.submit, button.uk-button, a.uk-button {
 		.button();
+}
+
+// Hide input text placeholder if focus
+input[type=text] {
+		&:focus {
+				&::placeholder {
+						color: transparent;
+				}
+		}
 }
 
 
@@ -364,7 +401,7 @@ div.aureaHeader {
 						&.tall {
 								display: none;
 								img {
-										width: 4em;
+										width: 3em;
 								}
 						}
 				}
@@ -383,17 +420,18 @@ div.aureaHeader {
 								display: flex;
 								align-items: center;
 								padding-left: 0.5em;
-								padding-right: 0.5rem;
+//								padding-right: 0.5rem;
 						}
 						div.menubarCenter {
 								
 								li a span.menuLabel {
-										margin-left: 0.1em;
+										margin-left: 0.2em;
+										vertical-align: bottom;
 								}
 
 						}
 						div.menubarRight {
-								
+								padding-right: 0.5em;
 						}
 						
 						ul.uk-navbar-nav {
@@ -402,6 +440,7 @@ div.aureaHeader {
 								
 								li {
 										padding-top: 1em;
+										text-align: center;
 
 										&.active {
 												border-bottom-width: 8px;
@@ -562,33 +601,51 @@ div.VIAPublicHomeComponent {
 		padding: 2em 0;
 		background-color: @a-color-main;
 		//		position: relative;
+		min-height: 80vh; // to fill the background enough with the color
 		
 		
 		div.aureaBanner {
-				// background-color: @t-color-red;
+				background-color: black;
 				// background-image: url(/site/images/public_banner.jpg);
 				// background-repeat: no-repeat;
 				// background-size: cover;
 				padding: 0;
-				margin-bottom: 2em;
-				position: relative;
+				margin-bottom: 20px;
+//				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
 
-				img.bannerImage {
+				div.bannerImage {
 						//						position: absolute;
-						display: block;
+						// display: block;
+						// max-width: 50%;
+						// min-width: 0; // allows shrink for flex flex image with a given dimension
+//						max-height: 100%;
+						flex-shrink: 1;
+						//flex-grow: 0;
+						flex-basis: 33%;
+
+						img {
+								max-height: 30vh;
+						}
 				}
 
 				div.bannerText {
-						position: absolute;
-						width: 100%;
-						display: block;
-						margin: 3em 0 0 66%;
+//						position: absolute;
+//						width: 100%;
+//						display: block;
+						//						margin: 3em 0 0 66%;
+						padding: 2em 2em 2em 1em;
+						flex-basis: 60%;
 						color: white;
 						font-family: @base-heading-font-family;
 						
 						div.bannerTextTitle {
 								font-size: 200%;
-								margin-bottom: 1em;
+								margin-bottom: 0.7em;
+								line-height: normal;
+								white-space: nowrap;
 						}
 
 						div.bannerTextSubtitle {
@@ -641,7 +698,7 @@ div.VIAAurStartComponent {
 						padding: @pad 3px;
 				}
 
-				span.goAhead {
+				span.entryGoAhead {
 						color: black; // @a-color-text;
 						flex-grow: 1;
 						flex-shrink: 0;
@@ -870,7 +927,7 @@ div.VIAAurModuleExerciser {
 
 				span.divider {
 						font-weight: normal;
-						margin: 0 1em;
+						margin: 0 0.5em;
 				}
 				
 		}
@@ -883,16 +940,16 @@ div.VIAAurModuleExerciser {
 		// Accordion top line
 
 		.fatLineDivider() {
-				border-bottom-width: 1px;
-				border-bottom-style: solid;
-				border-bottom-color: @a-color-text-line;
-
-				&:first-child {
-						border-top-width: 1px;
-						border-top-style: solid;
-						border-top-color: @a-color-text-line;
-						
+				&:nth-last-child(1 of &), &.isOpen {
+						border-bottom-width: 1px;
+						border-bottom-style: solid;
+						border-bottom-color: @a-color-text-line;
 				}
+
+				border-top-width: 1px;
+				border-top-style: solid;
+				border-top-color: @a-color-text-line;
+
 		}
 
 
@@ -1949,8 +2006,13 @@ div.exercise {
 						user-select: none;
 						
 						span.hintFragment {
-								margin: 0.5em;
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
 
+								& + span.hintFragment {
+										margin-left: 0.5em;
+								}
+								
 								&.typingAssisted {
 										cursor: pointer;
 										background-color: yellow;
@@ -1974,7 +2036,22 @@ div.exercise {
 						div.textListLine {
 								display: flex;
 								justify-content: space-between;
+								padding-top: 3px;
 
+								// Mimic text input for the whole line
+								border-top: none;
+								border-left: none;
+								border-right: none;
+								border-bottom: @borderBottomClozePlaceholders;
+								border-radius: 0;
+
+								&.correct {
+										background-color: @correctColor;
+								}
+								&.wrong {
+										background-color: @wrongColor;
+								}
+								
 								span.lineNumber {
 										color: @a-color-text-light;
 										display: inline-block;
@@ -1982,21 +2059,38 @@ div.exercise {
 								}
 
 								input[type=text].textInput {
-										.clozeTextPlaceholder();
-										width: 100%;
-										caret-color: red;
+										// @borderBottomClozePlaceholders: 1px solid black;
+										// border-top: none;
+										// border-left: none;
+										// border-right: none;
+										// border-bottom: @borderBottomClozePlaceholders;
+										// border-radius: 0;
+										border: none;
+										margin: 0;
+										padding: 0px 4px;
+										background-color: transparent;
+								
 
-										&.correct {
-												background-color: @correctColor;
-										}
-										&.wrong {
-												background-color: @wrongColor;
-										}
+										width: 100%;
+//										caret-color: red;
+
+										// &.correct {
+										// 		background-color: @correctColor;
+										// }
+										// &.wrong {
+										// 		background-color: @wrongColor;
+										// }
 
 										
 										&:focus {
-												outline: 1px solid #ccc;
-												background-color: #ffd;
+												//outline: 1px solid #ccc;
+												outline: none;
+												// border: 1px solid black;
+												//background-color: #ffd;
+
+												// &::placeholder {
+												// 		color: transparent;
+												// }
 										}
 
 								}
@@ -2049,6 +2143,8 @@ div.exercise {
 										display: inline-block;
 								}
 						}
+						// input.searchText {
+						// }
 						
 				}
 				div.glossaryBody {
@@ -2072,6 +2168,9 @@ div.exercise {
 												font-weight: bold;
 												vertical-align: top;
 										}
+										td.description {
+												overflow-wrap: anywhere;
+										}
 										&.section {
 												td.title {
 														background-color: #eee;
@@ -2081,11 +2180,17 @@ div.exercise {
 										&.searchFound {
 												background-color: lightyellow;
 										}
-										&.searchFoundInTitle, &.internalGoto {
+										&.searchFoundInTitle, &.searchIsTitle, &.internalGoto {
 												td, td.title {
 														background-color: yellow;
 												}
 										}										
+										// Volltreffer zusätzlich hervorheben
+										&.searchIsTitle {
+												td.title {
+														color: green;
+												}
+										}
 										&.searchNotFound {
 												display: none;
 										}
@@ -2125,6 +2230,7 @@ div.VIAUnitComponent {
 		div.legend {
 				text-align: right;
 				font-size: 80%;
+				line-height: normal;
 		}
 
 }
@@ -2312,6 +2418,7 @@ div.VIAAurMyPortfolioComponent {
 		div.legend {
 				text-align: right;
 				font-size: 80%;
+				line-height: normal;
 		}
 		
 }

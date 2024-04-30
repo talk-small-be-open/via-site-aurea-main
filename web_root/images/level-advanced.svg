@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg version="1.1" id="Livello_1" x="0px" y="0px" viewBox="0 0 11 11" xml:space="preserve" width="11" height="11" sodipodi:docname="level-advanced.svg" inkscape:version="1.3.1 (91b66b0, 2023-11-16)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><sodipodi:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="49.022015" inkscape:cx="5.5485275" inkscape:cy="5.191545" inkscape:window-width="1376" inkscape:window-height="782" inkscape:window-x="25" inkscape:window-y="26" inkscape:window-maximized="0" inkscape:current-layer="Livello_1" /><metadata id="metadata846"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs id="defs844">
-	
-</defs>
-<style type="text/css" id="style833">
-	.st0{fill:#3a4d98;}
-</style>
-<path class="st0" d="M 5.5,0 C 2.5,0 0,2.5 0,5.5 0,8.5 2.5,11 5.5,11 8.5,11 11,8.5 11,5.5 11,2.5 8.5,0 5.5,0 Z" id="path835" style="fill:#0382a6;fill-opacity:1" sodipodi:nodetypes="sssss" />
-
-<path id="path1" style="fill:#ffffff;fill-rule:evenodd;stroke:#ffffff;stroke-width:5" inkscape:transform-center-x="0.00056503426" inkscape:transform-center-y="-0.038873189" transform="matrix(0.57385785,0,0,0.57385785,3.5285954,3.3948576)" d="M 3.8857644,4.3110721 3.46205,4.0907027 3.0403048,4.3148178 3.1189535,3.8437435 2.775481,3.5118953 3.2478031,3.4411248 3.4572706,3.0119163 3.6705329,3.439252 4.1434635,3.5058347 3.8029448,3.8407132 Z" /></svg>
+<svg id="Ebene_1" data-name="Ebene 1" width="19.96" height="18.99" viewBox="0 0 19.96 18.99" version="1.1" sodipodi:docname="ab_stern.svg" inkscape:version="1.3.1 (91b66b0, 2023-11-16)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="26.942635" inkscape:cx="9.9841758" inkscape:cy="9.4831112" inkscape:window-width="1272" inkscape:window-height="748" inkscape:window-x="0" inkscape:window-y="23" inkscape:window-maximized="0" inkscape:current-layer="Ebene_1" />
+  <defs id="defs1">
+    <style id="style1">
+      .cls-1 {
+        fill: #fff;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M15.97,18.99c-.06,0-.12-.02-.17-.06l-5.82-4.23-5.82,4.23c-.1.07-.24.07-.34,0-.1-.07-.14-.2-.11-.32l2.22-6.84L.12,7.54c-.1-.07-.14-.21-.11-.32.04-.12.15-.2.28-.2h7.19L9.71.18c.08-.24.47-.24.55,0l2.22,6.84h7.19c.13,0,.24.08.28.2.04.12,0,.25-.11.32l-5.82,4.23,2.22,6.84c.04.12,0,.25-.11.32-.05.04-.11.06-.17.06ZM9.98,14.06c.06,0,.12.02.17.06l5.27,3.83-2.01-6.19c-.04-.12,0-.25.11-.32l5.27-3.83h-6.51c-.13,0-.24-.08-.28-.2l-2.01-6.19-2.01,6.19c-.04.12-.15.2-.28.2H1.18l5.27,3.83c.1.07.14.21.11.32l-2.01,6.19,5.27-3.83c.05-.04.11-.06.17-.06Z" id="path1" style="fill:#0382a6;stroke:none;stroke-opacity:1;fill-opacity:1" />
+</svg>

@@ -15,6 +15,18 @@
 @media (max-width: @breakpoint-small-max) {
 
 		@a-header-height-small: @a-header-height * 0.8;
+
+		body {
+				div.footer {
+						font-size: 80%;
+						padding-top: @container-padding-horizontal;
+						div.company {
+								img.hepLogo {
+										width: 150px;
+								}
+						}
+				}
+		}
 		
 		div.coreContainer {
 				padding-left: 0;
@@ -27,17 +39,17 @@
 				padding-bottom: @a-header-padding / 2;
 				height: @a-header-height-small;
 
-				a.aureaLogo {
-						span.aureaLogo {
+				// a.aureaLogo {
+				// 		span.aureaLogo {
 						
-								&.wide {
-										display: none;
-								}
-								&.tall {
-										display: unset;
-								}
-						}
-				}
+				// 				&.wide {
+				// 						display: none;
+				// 				}
+				// 				&.tall {
+				// 						display: unset;
+				// 				}
+				// 		}
+				// }
 
 				nav {
 						height: @a-header-height-small;
@@ -59,11 +71,28 @@
 				
 		}
 
+		// Secondary navbar is sticky. Need to align with same height of main navbar
 		div.VIAAurModuleExerciser {
 				div.moduleNavigation {
 						top: @a-header-height-small;
 				}
 		}
+		div.VIAUnitComponent {
+				div.unitNavigation {
+						top: @a-header-height-small;
+				}
+				div.legend {
+						font-size: 60%;
+				}
+		}
+
+		div.VIAAurMyPortfolioComponent {
+				div.legend {
+						font-size: 60%;
+				}
+		}
+		
+
 
 
 		div.exercise {
@@ -80,16 +109,18 @@
 // Not large screens ==============================================================================================
 @media (max-width: @breakpoint-large) {
 
-		body {
-				// div.mainContainer {
-				// 		padding-bottom: 3em;
-				// }
-				
-				// div.footer {
-				// 		bottom: 3px;
-				// 		position: absolute;
-				// 		font-size: 90%;
-				// }
+		div.aureaHeader {
+				a.aureaLogo {
+						span.aureaLogo {
+								
+								&.wide {
+										display: none;
+								}
+								&.tall {
+										display: unset;
+								}
+						}
+				}
 		}
 }
 
@@ -97,7 +128,7 @@
 @media (min-width: @breakpoint-large) {
 
 		@backgroundcolor: #EFEBE8;
-		@sidePadding: 10vw;
+		@sidePadding: 5vw;
 		
 		html {
 				min-height: 100vh;
@@ -109,7 +140,12 @@
 
 
 				div.aureaHeader {
+						padding-right: @sidePadding;
 						padding-left: @sidePadding;
+
+						nav.aureaMenubar ul.uk-navbar-nav li + li {
+								margin-left: 0.5em;
+						}
 				}
 				
 				div.coreContainer {
@@ -124,6 +160,12 @@
 //								padding-bottom: 1em;
 						}
 				}
+
+				div.footer {
+						padding-left: @sidePadding;
+						padding-right: @sidePadding;
+				}
+
 
 				&.loggedIn {
 						div.coreContainer {
@@ -147,12 +189,6 @@
 
 		}
 		
-
-		div.aureaHeader {
-				padding-left: 10%;
-				padding-right: 10%;				
-		}
-
 		div.VIAAurTaskExerciser {
 				div.exercise {
 						div.audioPlayer {
