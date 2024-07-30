@@ -296,27 +296,17 @@ span.pillarDocument {
 						border: 1px solid black;
 				}
 
+				//
 				// Custom styles, used with pillar syntax ((style blablabl))
-				.dialogA {
-						color: yellow;
-				}
-
-				.dialogB {
-						color: yellow;
-				}
-
-				.dialogC {
-						color: yellow;
-				}
-
-				.dialogD {
-						color: yellow;
-				}
+				//
 				
-				.dialogE {
-						color: yellow;
-				}
-
+				// .dialogA {
+				// 		color: yellow;
+				// }
+				// .dialogB {
+				// 		color: yellow;
+				// }
+				
 				
 				.noWrap {
 						white-space: nowrap;
@@ -324,25 +314,20 @@ span.pillarDocument {
 
 				
 				// Custom paragraph styles, used with pillar syntax @@style blablabl
-				&.dialogA {
-						.dialogA();
+				// &.dialogA {
+				// 		.dialogA();
+				// }
+				// &.dialogB {
+				// 		.dialogB();
+				// }
+
+				&.fakeTaskSupertitle {
+						.titleFontFamily();
+						font-size: 1.5rem;
+						line-height: 1.4;
+						font-weight: bold;
 				}
 
-				&.dialogB {
-						.dialogB();
-				}
-
-				&.dialogC {
-						.dialogC();
-				}
-
-				&.dialogD {
-						.dialogD();
-				}
-
-				&.dialogE {
-						.dialogE();
-				}
 
 				
 		}
@@ -394,6 +379,8 @@ div.aureaHeader {
 				.serif();
 				font-size: 1.5rem;
 				color: white;
+				display: block;
+				position: relative;
 
 				span.aureaLogo {
 						
@@ -409,6 +396,14 @@ div.aureaHeader {
 								}
 						}
 				}
+
+				span.demoLabel {
+						position: absolute;
+						left: unset;
+						right: -1.5em;
+						top: 90%;
+				}
+
 
 		}
 
@@ -1111,8 +1106,8 @@ div.VIAAurModuleExerciser {
 
 
 div.VIAAurTaskExerciser {
-		padding-left: 0.2em;
-		padding-right: 0.2em;
+		// padding-left: 0.2em;
+		// padding-right: 0.2em;
 		margin-bottom: 2em;
 }
 
@@ -2003,31 +1998,38 @@ div.exercise {
 
 				margin-bottom: 2em;
 
-				div.hintFragments {
+				div.keyboardArea {
 						padding: 1em;
 						background-color: @a-color-background-light;
 						border: 1px solid black;
 						user-select: none;
-						
-						span.hintFragment {
-								margin-top: 0.5em;
-								margin-bottom: 0.5em;
 
-								& + span.hintFragment {
-										margin-left: 0.5em;
-								}
+						div.hintFragments {
+								display: flex;
+								flex-wrap: wrap;
+								justify-content: flex-start;
+								gap: 0.5em;
 								
-								&.typingAssisted {
-										cursor: pointer;
-										background-color: yellow;
-										padding: 0 0.2em;
-										border: 1px dotted #666;
-										&:hover {
-												background-color: white;
+								span.hintFragment {
+										// margin-top: 0.5em;
+										// margin-bottom: 0.5em;
+										white-space: nowrap;
+
+										// & + span.hintFragment {
+										// 		margin-left: 0.5em;
+										// }
+										
+										&.typingAssisted {
+												cursor: pointer;
+												background-color: yellow;
+												padding: 0 0.2em;
+												border: 1px dotted #666;
+												&:hover {
+														background-color: white;
+												}
 										}
 								}
 						}
-
 						div.hintTools {
 								margin-top: 1em;
 						}
@@ -2235,6 +2237,8 @@ div.VIAUnitComponent {
 		}
 
 		div.legend {
+				margin-top: @base-heading-margin-top;
+				margin-bottom: 5px;
 				float: right;
 				text-align: right;
 				font-size: 80%;
@@ -2247,6 +2251,7 @@ ul.modulesList {
 		
 		padding-left: 0;
 		list-style-type: none;
+		clear: both;
 		
 		li {
 				.catalogListItem();
@@ -2304,6 +2309,7 @@ ul.modulesList {
 								flex-grow: 1;
 								flex-shrink: 0;
 								//										text-align: right;
+								font-size: 1rem;
 
 								display: flex;
 								justify-content: flex-end;
