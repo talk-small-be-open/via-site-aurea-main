@@ -938,22 +938,27 @@ div.VIAAurModuleExerciser {
 
 		// Accordion top line
 
-		.fatLineDivider() {
+
+		.topLineDivider() {
+				border-top-width: 1px;
+				border-top-style: solid;
+				border-top-color: @a-color-text-line;
+
+		}
+		
+		.smartLineDivider() {
 				&:nth-last-child(1 of &), &.isOpen {
 						border-bottom-width: 1px;
 						border-bottom-style: solid;
 						border-bottom-color: @a-color-text-line;
 				}
 
-				border-top-width: 1px;
-				border-top-style: solid;
-				border-top-color: @a-color-text-line;
-
+				.topLineDivider();
 		}
 
 
 		div.accBar {
-				.fatLineDivider();
+				.smartLineDivider();
 //				padding: 1em 0;
 				margin: 0;
 				cursor: pointer;
@@ -1098,7 +1103,7 @@ div.VIAAurModuleExerciser {
 						.hiddenSectionButWithDefinedDimension();
 				}
 				+ .noTitleTaskExercise {
-						.fatLineDivider();
+						.topLineDivider();
 				}
 		}
 
