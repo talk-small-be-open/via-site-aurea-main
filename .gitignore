@@ -1,1 +1,5 @@
 /pharo*
+web_root/css/_ausgelagert.less
+integration_test.log
+integration_test_details.log
+jmeter.log
